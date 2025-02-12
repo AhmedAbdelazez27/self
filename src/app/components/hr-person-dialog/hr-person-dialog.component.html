@@ -1,0 +1,140 @@
+<div class="justify-content-between align-items-center">
+  <h5 class="card-title m-0">{{ 'Profile.HrPersonVacations' | translate }}</h5>
+</div>
+<br>
+<div class="row">
+  <div class="col-xl-4 col-lg-4">
+    <div class="form-group">
+      <label for="StatusLkpId">{{ 'Profile.StatusLkpId' | translate }}</label>
+      <input type="hidden" class="form-control" autocomplete="off" id="relname"
+        [(ngModel)]="PersonEditObj.operationNumber" [disabled]="false">
+      <input type="text" class="form-control" autocomplete="off" id="StatusLkpId"
+        [(ngModel)]="PersonEditObj.fndStatusLkp" [disabled]="true">
+    </div>
+  </div>
+
+ <div class="col-xl-4 col-lg-4">
+  <div class="form-group">
+    <label for="operationDate" [class.label-over]="PersonEditObj.operationDate">
+      {{ 'Profile.OperationDate' | translate }}
+    </label>
+    <input class="form-control" [(ngModel)]="PersonEditObj.operationDate" [disabled]="true">
+  </div>
+</div>
+
+
+  <div class="col-xl-4 col-lg-4">
+    <div class="form-group">
+      <label for="hrPersonId">{{ 'Profile.HrPersonId' | translate }}</label>
+      <select id="hrPersonId" class="form-control" [(ngModel)]="PersonEditObj.hrPersonId" [disabled]="true">
+        <option *ngFor="let hrPerson of hrPersonList" [value]="hrPerson.id">{{hrPerson.text}}</option>
+      </select>
+ 
+    </div>
+  </div>
+ 
+
+  <div class="col-xl-4 col-lg-4">
+    <div class="form-group">
+      <label for="hrVacationsTypeId">{{ 'Profile.HrVacationsTypeId' | translate }}</label>
+      <select id="hrVacationsTypeId" class="form-control"
+        [(ngModel)]="PersonEditObj.hrVacationsTypeId" (change)="onChange($event.target.value)"
+       >
+        <option *ngFor="let VacationsType of hrVacationsTypeList "
+          [value]="VacationsType.id">{{VacationsType.text}}
+        </option>
+      </select>
+     
+    </div>
+  </div>
+
+
+  <div class="col-xl-4 col-lg-4" *ngIf="PersonEditObj.hrVacationsTypeId == 30">
+    <div class="form-group">
+      <label for="VacationBalance">{{ 'Profile.VacationBalance' | translate }}</label>
+      <input type="text" class="form-control" autocomplete="off" id="VacationBalance"
+        [(ngModel)]="PersonEditObj.vacationBalance" [disabled]="true">
+    </div>
+  </div>
+
+
+
+  <!-- </div>
+<div class="row"> -->
+
+  <div class="col-xl-4 col-lg-4">
+    <div class="form-group">
+        <label (click)="picker2.open()" for="startDate" [class.label-over]="PersonEditObj.startDate">{{ 
+          'Profile.StartDate' | translate }}</label>
+        <input class="form-control" (click)="picker2.open();" [(ngModel)]="PersonEditObj.startDate"
+               [matDatepicker]="picker2" id="startDate" autocomplete="off" [disabled]="disabled"
+               (dateChange)="handleStartDateChange($event.value)">
+        <mat-datepicker #picker2></mat-datepicker>
+    </div>
+</div>
+
+  
+<div class="col-xl-4 col-lg-4">
+  <div class="form-group">
+      <label (click)="picker3.open()" for="EndDate" [class.label-over]="PersonEditObj.endDate">
+          {{ 'Profile.EndDate' | translate }}
+      </label>
+      <input class="form-control" (click)="picker3.open();" [(ngModel)]="PersonEditObj.endDate"
+             [matDatepicker]="picker3" id="EndDate" autocomplete="off" [disabled]="disabled"
+             (dateChange)="handleEndDateChange($event.value)">
+      <mat-datepicker #picker3></mat-datepicker>
+  </div>
+</div>
+
+  <div class="col-xl-4 col-lg-4">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6">
+        <div class="form-group">
+          <label for="NoOfDays">{{ 'Profile.NoOfDays' | translate }}</label>
+          <input type="text" class="form-control" autocomplete="off" id="NoOfDays" [(ngModel)]="PersonEditObj.noOfDays"
+            [disabled]="false">
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6">
+        <div class="form-group">
+          <label for="NoOfDays">{{ 'Profile.IsOutCountryLeave' | translate }}</label>
+          <input type="checkbox" class="form-control" autocomplete="off" id="IsOutCountryLeave"
+            [(ngModel)]="PersonEditObj.isOutCountryLeave">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-lg-4 col-md-6" *ngIf="PersonEditObj.attachmentRequired == 1">
+    <div class="col-sm-6">
+
+
+      <div class="custom-file">
+        <label for="relname">{{ 'Profile.File' | translate }}</label>
+        <input type="file" class="bi bi-upload" [class.is-invalid]="PersonEditObj.attachmentPath"
+          (change)="onFileChange($event,PersonEditObj.id)" [(ngModel)]="PersonEditObj.attachmentPath"
+          id="customFile{{ PersonEditObj.id }}">
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="col-xl-4 col-lg-4">
+    <div class="form-group">
+      <label for="Notes">{{ 'Profile.Notes' | translate }}</label>
+      <input type="text" class="form-control" autocomplete="off" id="Notes" [(ngModel)]="PersonEditObj.notes"
+        [disabled]="disabled">
+    </div>
+  </div>
+</div>
+
+
+<mat-dialog-actions class="justify-content-end">
+
+  <button mat-button color="secondary" (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate
+    }}</button>
+  <button mat-raised-button color="primary" (click)="save()">{{ 'ModalMsgs.save' | translate }}</button>
+</mat-dialog-actions>

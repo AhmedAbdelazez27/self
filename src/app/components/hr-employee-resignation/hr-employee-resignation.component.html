@@ -1,0 +1,50 @@
+<div class="profile-wrapper">
+    <!-- Loading Overlay -->
+    <app-insideloader *ngIf="loadingOverlay"></app-insideloader>
+    <!-- =============== -->
+    <div class="form" *ngIf="resignationData && !loadingOverlay">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title">{{'HrEmployeeResignation.Title' | translate }}</h5>
+            <fa-icon class="ico text-primary fa-2x" [icon]="addIcon" (click)="addResignation()"></fa-icon>
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">{{'HrEmployeeResignation.ResignationNumber' | translate }}</th>
+                  <th scope="col">{{'HrEmployeeResignation.ResignationDate' | translate }}</th>
+                  <th scope="col">{{'HrEmployeeResignation.HrPersonId' | translate }}</th>
+                  <th scope="col">{{'HrEmployeeResignation.ResignationTypeLkpId' | translate }}</th>
+                  <th scope="col">{{'HrEmployeeResignation.NoticeDate' | translate }}</th>
+                  <th scope="col">{{'Profile.StatusLkpId' | translate }}</th>
+                  <th scope="col">{{'Profile.procedures' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let hrbersonData of resignationData; let i = index">
+                  <th>{{ hrbersonData.resignationNumber }}</th>
+                  <th>{{ hrbersonData.resignationDate }}</th>
+                  <th>{{ hrbersonData.hrPersons.fullName }}</th>
+                  <th>{{ hrbersonData.resignationTypeLkp }}</th>
+                  <th>{{ hrbersonData.noticeDate}}</th>
+                  <th>{{ hrbersonData.statusLkp }}</th>
+                  <td>
+                    <fa-icon *ngIf="hrbersonData.statusLkpId!=11510" class="ico text-info" [icon]="editIcon"
+                      (click)="editResignation(i)"></fa-icon>
+                    <fa-icon *ngIf="hrbersonData.statusLkpId!=11510" class="ico text-danger ml-2" [icon]="deleteIcon"
+                      (click)="deleteResignation(hrbersonData.id)"></fa-icon>
+  
+                  </td>
+                </tr>
+  
+              </tbody>
+            </table>
+          </div>
+  
+        
+        </div>
+      </div>
+    </div>
+  </div>

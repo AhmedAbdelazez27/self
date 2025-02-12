@@ -1,0 +1,270 @@
+<div class="page-wrapper">
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white" style="height: 80px;">
+        <div class="container-fluid">
+            <div *ngIf="smallScreen" class="small-details d-flex">
+                <div style="white-space: nowrap;">
+                    <a href="javascript:;" (click)="smallScreen=!smallScreen" class="menu-title">
+                        <mat-icon>menu</mat-icon>
+                        <span><b>{{ 'Board.Menu' | translate }}</b></span>
+                    </a>
+                </div>
+
+                <div *ngIf="smallScreen" class="ml-auto">
+                    <a *ngIf="lang == 'ar'" class="circle btn btn-custom ml-3 " href="javascript:;"
+                        style="padding: 5px;" (click)="changeLang('en')">
+                        <span>E</span>
+                    </a>
+                    <a *ngIf="lang == 'en'" class="circle btn btn-custom ml-3 " href="javascript:;"
+                        style="padding: 5px;" (click)="changeLang('ar')">
+                        <span>ع</span>
+                    </a>
+                </div>
+
+                <div *ngIf="smallScreen" class="ml-2" [matMenuTriggerFor]="notificationmenu">
+
+                    <button class="googleicon">
+                        <mat-icon matBadge="{{NotificationCount}}" matBadgePosition="after"
+                            matBadgeColor="success">notifications</mat-icon>
+                    </button>
+
+                    <mat-menu #notificationmenu="matMenu">
+                        <div class="notification-container">
+                            <div class="notification-header">
+                                <h6 class="notification-title">{{ 'Board.Notifications' | translate }}</h6>
+                                <!-- <a href="#" class="mark-as-read">Mark as read</a> -->
+                            </div>
+                            <hr>
+                            <div *ngIf="NotificationCount !=0" class="notification-list">
+                                <div *ngFor="let item of NotificationList; let i = index" class="notification-box"
+                                    [@toggleAnimation]="showAll || i < 3 ? 'show' : 'hide'">
+
+                                    <a (click)="handleNotificationClick(item)" class="notification-link">
+                                        <div class="notification-content">
+                                            <!-- <div class="notification-image">
+                                    <img class="img" src="{{personPhoto}}" style="max-width: 75%; max-height: 75%;" />
+                                  </div> -->
+                                            <div class="notification-image">
+                                                <img class="img" [src]="item.notification.data.properties.photoUrl" />
+                                            </div>
+                                            <div class="notification-content">
+                                                <span class="menu-info">
+                                                    <span class="menu-title">{{ item.notification.data.message }}</span>
+                                                    <span class="menu-desc">{{ item.notification.notificationName
+                                                        }}</span>
+                                                    <span class="menu-time text-right">
+                                                        <i class="material-icons"></i> {{ item.timeAgoMessage }}
+                                                    </span>
+                                                </span>
+                                            </div>
+
+
+                                            <div class="notification-icon">
+                                                <i class="material-icons">fiber_manual_record</i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div *ngIf="NotificationCount ==0" class="empty-notification">
+                                <h6>
+                                 <span><b>!</b></span>
+                               <b>Currently You Have 0 Notifications</b> 
+                                </h6>
+                             </div>
+
+                            <a *ngIf="NotificationCount !=0" href="#" class="view-all" (click)="toggleShowAll($event)">
+                                {{ showAll ? 'Show less' : 'View all notifications' }}
+                            </a>
+                        </div>
+                    </mat-menu>
+
+
+
+                </div>
+
+                <div *ngIf="smallScreen" class="ml-2" [matMenuTriggerFor]="menu">
+                    <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+                        <img class="img" src="{{personPhoto}}" alt="img"
+                            style="max-width: 40px;max-height: 100%;border-radius: 50%;" />
+                        <!-- title="{{userData.fullName}}" -->
+                    </div>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="Logout()" class="text-center">
+                            <span>{{ 'Board.Logout' | translate }}</span>
+                        </button>
+                        <button mat-menu-item (click)="changePassword()" class="text-center">
+                            <span>{{'Board.Sidebar.changePassword' | translate}}</span>
+                        </button>
+                    </mat-menu>
+                </div>
+
+            </div>
+            <div class="collapse navbar-collapse" [class.show]="showNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mr-3">
+                        <a *ngIf="lang == 'ar'" class="btn btn-custom ml-3 circle" href="javascript:;"
+                            (click)="changeLang('en')">
+                            <span>E</span>
+                        </a>
+                        <a *ngIf="lang == 'en'" class="btn btn-custom ml-3 circle" href="javascript:;"
+                            (click)="changeLang('ar')">
+                            <span>ع</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item mr-3" [matMenuTriggerFor]="notificationmenu">
+                        <button class="googleicon">
+                            <mat-icon matBadge="{{NotificationCount}}" matBadgePosition="after"
+                                matBadgeColor="success">notifications</mat-icon>
+                        </button>
+                    </li>
+
+                    <mat-menu #notificationmenu="matMenu">
+                        <div class="notification-container">
+                            <div class="notification-header">
+                                <h6 class="notification-title">{{ 'Board.Notifications' | translate }}</h6>
+                                <!-- <a href="#" class="mark-as-read">Mark as read</a> -->
+                            </div>
+                            <hr>
+                            <div  *ngIf="NotificationCount !=0" class="notification-list">
+                                <div  *ngFor="let item of NotificationList; let i = index" class="notification-box"
+                                    [@toggleAnimation]="showAll || i < 3 ? 'show' : 'hide'">
+
+                                    <a (click)="handleNotificationClick(item)" class="notification-link">
+                                        <div  *ngIf="item" class="notification-content">
+                                            <!-- <div class="notification-image">
+                                    <img class="img" src="{{personPhoto}}" style="max-width: 75%; max-height: 75%;" />
+                                  </div> -->
+                                            <div class="notification-image">
+                                                <img class="img" [src]="item.notification.data.properties.photoUrl" />
+                                            </div>
+                                            <div class="notification-content">
+                                                <span class="menu-info">
+                                                    <span class="menu-title">{{ item.notification.data.message }}</span>
+                                                    <span class="menu-desc">{{ item.notification.notificationName
+                                                        }}</span>
+                                                    <span class="menu-time text-right">
+                                                        <i class="material-icons"></i> {{ item.timeAgoMessage }}
+                                                    </span>
+                                                </span>
+                                            </div>
+
+
+                                            <div class="notification-icon">
+                                                <i class="material-icons">fiber_manual_record</i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div *ngIf="NotificationCount ==0" class="empty-notification">
+                               <h6>
+                                <span>!</span>
+                              <b>Currently You Have 0 Notifications</b> 
+                               </h6>
+                            </div>
+
+                            <a *ngIf="NotificationCount !=0" href="#" class="view-all" (click)="toggleShowAll($event)">
+                                {{ showAll ? 'Show less' : 'View all notifications' }}
+                            </a>
+                        </div>
+                    </mat-menu>
+
+
+
+
+                    <!--LogOut-->
+
+                    <li class="nav-item mr-3" [matMenuTriggerFor]="menu">
+                        <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+                            <img class="img" src="{{personPhoto}}" alt="img"
+                                style="max-width: 40px;max-height: 100%;border-radius: 50%;" />
+                            <!-- title="{{userData.fullName}}" -->
+                        </div>
+                    </li>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="Logout()" class="text-center">
+                            <span>{{ 'Board.Logout' | translate }}</span>
+                        </button>
+                        <button mat-menu-item (click)="changePassword()" class="text-center">
+                            <span>{{'Board.Sidebar.changePassword' | translate}}</span>
+                        </button>
+                    </mat-menu>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidenavbar-->
+
+    <div class="sidebar" [class.hide-sidebar]="smallScreen" style="overflow: auto;">
+        <div class="logo">
+            <div class="logo-background"></div>
+            <img src="{{filePath}}" alt="img" width="100" height="75" viewBox="0 0 260 176">
+        </div>
+        <img (click)="smallScreen=!smallScreen" class="close-img" src="{{filePath}}" alt="img">
+        <div class="links">
+            <a (click)="isSmallScreen()" href="javascript:;" *ngFor="let link of links"
+                routerLink="{{ link.routerLink }}" routerLinkActive="{{ link.routerLinkActive }}">
+                <fa-icon class="ml-1" [icon]="link.icon"></fa-icon>
+                <span class="ml-2" style="font-size: 14px;"> {{ link.text }} </span>
+            </a>
+        </div>
+
+        <!-- Bottom Navbar -->
+        <div class="navbar-bottom">
+            <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-bottom">
+                <div class="container-fluid">
+                </div>
+            </nav>
+        </div>
+
+        <!-- samllScreen Side bar -->
+
+        <div class="sidebar-left">
+            <!-- Empty right sidebar content -->
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="sidebar-right">
+            <!-- Empty right sidebar content -->
+        </div>
+
+
+        <!-- <div class="footer">
+            <a href="javascript:;" (click)="Logout()">
+                <span>{{ 'Board.Logout' | translate }}</span>
+                <img class="ml-3" src="./assets/images/logout2.png" alt="img" width="40px" height="40px">
+            </a>
+        </div> -->
+        <!-- <div class="curved"></div> -->
+    </div>
+
+    <!-- <div class="main-cards">
+        <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide *ngFor="let card of cards" id="{{card.id}}">
+                <div class="one-card {{ card.backgroundClass }}">
+                    <img src="./assets/images/{{card.icon}}" alt="img">
+                    <p class="{{ card.numberColor }}" [ngStyle]="{'font-size': card.number>999 ? '30px' : '30px'}">{{ card.number }}</p>
+                    <div class="ml-3">
+                        <span>{{ card.text }}</span>
+                        <h3>{{ card.text2 }}</h3>
+                    </div>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+    </div> -->
+
+    <!-- #### Routes Content #### -->
+    <div class="main-content">
+        <router-outlet></router-outlet>
+    </div>
+    <!-- ======================== -->
+</div>

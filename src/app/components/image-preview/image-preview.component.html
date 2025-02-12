@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Preview</h1>
+<div mat-dialog-content class="dialog-content">
+  <img *ngIf="data.type === 'image'" [src]="data.filePath" alt="Preview Image" class="preview-img">
+  <div *ngIf="data.type === 'file'">
+    <p>File cannot be previewed.</p>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

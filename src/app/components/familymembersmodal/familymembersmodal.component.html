@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h5 class="card-title m-0">{{ 'Profile.Family' | translate }}</h5>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="relname" [class.label-over]="RelativeEditObj.name">{{ 'Profile.Name' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" id="relname" [(ngModel)]="RelativeEditObj.name">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <label for="relgender" [class.label-over]="RelativeEditObj.genderLkpId">{{ 'Profile.Gender' | translate }}</label>
+        <select id="relgender" class="form-control" [(ngModel)]="RelativeEditObj.genderLkpId">
+            <option *ngFor="let gender of genderList" [value]="gender.id">{{ gender.text }}</option>
+        </select>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <label for="reltype" [class.label-over]="RelativeEditObj.relativesTypeLkpId">{{ 'Profile.RelativeType' | translate }}</label>
+        <select class="form-control" id="reltype" [(ngModel)]="RelativeEditObj.relativesTypeLkpId">
+            <option *ngFor="let relativesType of relativesTypeList" [value]="relativesType.id">{{ relativesType.text }}</option>
+        </select>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <label for="relnationality" [class.label-over]="RelativeEditObj.nationalityLkpId">{{ 'Profile.Nationality' | translate }}</label>
+        <select id="relnationality" class="form-control" [(ngModel)]="RelativeEditObj.nationalityLkpId">
+            <option *ngFor="let nationality of nationalityList" [value]="nationality.id">{{ nationality.text }}</option>
+        </select>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="relidNumber" [class.label-over]="RelativeEditObj.idNumber">{{ 'Profile.IdNumber' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" [dropSpecialCharacters]="false" mask="000-0000-0000000-0" id="relidNumber" [(ngModel)]="RelativeEditObj.idNumber">
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6">
+        <label for="educationalStage" [class.label-over]="RelativeEditObj.educationalStageLkpId">{{ 'Profile.educationalStage' | translate }}</label>
+        <select class="form-control" id="educationalStage" [(ngModel)]="RelativeEditObj.educationalStageLkpId">
+            <option *ngFor="let educationalStage of educationalStageList" [value]="educationalStage.id">{{ educationalStage.text }}</option>
+        </select>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <label for="relqualification" [class.label-over]="RelativeEditObj.qualificationLkpId">{{ 'Profile.Degree' | translate }}</label>
+        <select class="form-control" id="relqualification" [(ngModel)]="RelativeEditObj.qualificationLkpId">
+            <option *ngFor="let qualification of qualificationsList" [value]="qualification.id">{{ qualification.text }}</option>
+        </select>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <label for="relMarital" [class.label-over]="RelativeEditObj.maritalStatusLkpId">{{ 'Profile.Marital' | translate }}</label>
+        <select class="form-control" id="relMarital" [(ngModel)]="RelativeEditObj.maritalStatusLkpId">
+            <option *ngFor="let marital of maritalStatusList" [value]="marital.id">{{ marital.text }}</option>
+        </select>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="relemployer" [class.label-over]="RelativeEditObj.employer">{{ 'Profile.Employer' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" id="relemployer" [(ngModel)]="RelativeEditObj.employer">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="relnotes" [class.label-over]="RelativeEditObj.employer">{{ 'Profile.Notes' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" id="relnotes" [(ngModel)]="RelativeEditObj.notes">
+        </div>
+    </div>
+</div>
+
+<mat-dialog-actions class="justify-content-end">
+    <button mat-button  (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate }}</button>
+   
+</mat-dialog-actions>

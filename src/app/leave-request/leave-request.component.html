@@ -1,0 +1,120 @@
+ <div class="profile-wrapper" style="font-size: 14px;">
+     <app-insideloader *ngIf="loadingOverlay"></app-insideloader>
+     <div class="form" *ngIf="vacationData && !loadingOverlay">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title">{{ 'Profile.LeavesRequest' | translate }}</h5>
+           </div>
+          <div class="table-responsive mt-3">
+            
+  
+  
+          <!-- DataTable Code-->
+          <div class="example-header">
+            <div class="search-box d-flex" mat-button  aria-label="Search">
+              <mat-icon class="filter-test">search</mat-icon>
+              <input matInput class="filter-input" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </div>
+        </div>
+          
+          <div class="example-container mat-elevation-z8">
+  
+            <mat-table class="responsive-md responsive-sm zebra sticky-header" [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+<!--           
+              <ng-container matColumnDef="documentRequestDate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header > {{'Profile.OperationDate' | translate }} </mat-header-cell>
+                <mat-cell *matCellDef="let row" class="operation-date-cell" > 
+  
+                  <div *ngIf="row.source == 1">{{ row.documentRequestDate }}</div>
+                  <div *ngIf="row.source == 2">{{ row.vacationOperationDate }}</div>  
+                
+                </mat-cell>
+              </ng-container> -->
+          
+  
+              <ng-container matColumnDef="type">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.RequestModule' | translate }} </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
+              </ng-container>
+       
+              <ng-container matColumnDef="documentHrPersons">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.HrPersonId' | translate }} </mat-header-cell>
+                <mat-cell *matCellDef="let row"> 
+                  
+                  <div *ngIf="row.source == 1">{{ row.documentHrPersons }}</div>
+                  <div *ngIf="row.source == 2">{{ row.vacationHrPersons?.fullName }}</div> 
+  
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="vacationBalance">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.vacationBalance' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row" class="vacationBalance"> {{row.vacationBalance}} </mat-cell>
+              </ng-container>
+      
+              <ng-container matColumnDef="vacationNoOfDays">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.NoOfDays' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row" class="NoOfDays"> {{row.vacationNoOfDays}} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="vacationStartDate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.StartDate' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row" > {{row.vacationStartDate}} </mat-cell>
+              </ng-container>
+  
+  
+              <ng-container matColumnDef="vacationEndDate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.EndDate' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row" > {{row.vacationEndDate}} </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="documentTypeLkp">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.HrRequestType' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row" > 
+                  
+                  <div *ngIf="row.source == 1">{{ row.documentTypeLkp }}</div>
+                  <div *ngIf="row.source == 2">{{ ('Profile.' + row.vacationHrVacationsTypes?.vacationsTypeName) | translate }}</div> 
+                
+                </mat-cell>
+              </ng-container>
+  
+              <ng-container matColumnDef="vacationPortalStatusLkp">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.StatusLkpId' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row" > 
+                  
+                  <div *ngIf="row.source == 1">
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41718" style="color: green; ">{{ row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41719" style="color: red; ">{{ row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41717" style="color: orange; ">{{ row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41716" style="color: orange; ">{{ row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41721" style="color: green;">{{ row.vacationPortalStatusLkp }}</span></div>
+                  <div *ngIf="row.source == 2">                  
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41699" style="color: green; ">{{ row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41700" style="color: red; ">{{ row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41698" style="color: orange; ">{{ row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41712" style="color: orange; ">{{ row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41723" style="color: green; ">{{ row.vacationPortalStatusLkp }}</span></div>
+        
+                  </mat-cell>
+              </ng-container>
+  
+              <!-- <ng-container matColumnDef="Actions">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Action' | translate }}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> 
+     
+                </mat-cell>
+              </ng-container> -->
+          
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;">
+              </mat-row>
+            </mat-table>
+          
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+          </div>
+   
+        </div>
+      </div>
+    </div>
+  </div>

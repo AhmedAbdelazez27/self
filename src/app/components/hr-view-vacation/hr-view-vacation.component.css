@@ -1,0 +1,63 @@
+.form-control{
+    padding: .10rem .75rem;
+}
+
+.h5,h5,.h2{
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+.h2{
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(102, 185, 240);
+}
+.subheader{
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(160, 156, 158);
+}
+.material-symbols-outlined{
+    vertical-align: middle; /* Align the icon vertically */
+    margin-right: 5px;
+}
+.mat-dialog-container{
+    width: 70% !important;
+} 
+.table td, .table th {
+    padding: 0.25rem;
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+}
+@media (min-width : 320px)  and (max-width: 839px) {
+    .form-control{
+        padding: .10rem .55rem;
+    }
+    
+    .h5,h5,.h2,h2{
+        font-size: 14px;
+        font-weight: bold;
+        font-style: normal;
+        font-family: Arial, Helvetica, sans-serif;
+        color: rgb(75, 73, 73);
+    }
+    .material-symbols-outlined{
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+    .mat-dialog-container{
+        width: 100% !important;
+
+    } 
+    .table td, .table th {
+        padding: 0.25rem;
+        vertical-align: middle;
+        border: 1px solid #dee2e6;
+    }
+}

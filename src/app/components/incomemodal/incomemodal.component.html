@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h5 class="card-title">{{ 'AddRequest.requestIncomeData' | translate}}</h5>
+</div>
+<div class="row">
+    <!-- <div class="col-md-6">
+        <div class="form-group">
+            <label for="scIncomeId" [class.label-over]="IncomeEditObj.scIncomeId">{{ 'AddRequest.requestIncomeSource' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="scIncomeId" [(ngModel)]="IncomeEditObj.scIncomeId">
+        </div>
+    </div> -->
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="scIncomeId" [class.label-over]="IncomeEditObj.scIncomeId">{{ 'AddRequest.requestIncomeSource' | translate }}</label>
+            <select id="scIncomeId" class="form-control" [(ngModel)]="IncomeEditObj.scIncomeId">
+                <option *ngFor="let scIncome of dataIncomeList" [value]="scIncome.id">{{ scIncome.text }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="monthlyIncomeAmount" [class.label-over]="IncomeEditObj.monthlyIncomeAmount">{{ 'AddRequest.requestMonthlyIncome' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="monthlyIncomeAmount" mask="separator" thousandSeparator="," [(ngModel)]="IncomeEditObj.monthlyIncomeAmount">
+        </div>
+    </div>
+</div>
+<mat-dialog-actions class="justify-content-end">
+    <button mat-button  (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate }}</button>
+    <button mat-raised-button color="primary" (click)="save()">{{ 'ModalMsgs.save' | translate }}</button>
+</mat-dialog-actions>

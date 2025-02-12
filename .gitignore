@@ -1,0 +1,43 @@
+# Node modules
+node_modules/
+
+
+# IDEs and Editors
+.vscode/
+.idea/
+.vs/
+.vs
+# OS-specific files
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# Angular build output
+/dist
+out-tsc/
+/dist
+/dist-compressed
+./dist-compressed
+.history
+# npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript compiled files
+*.tsbuildinfo
+
+# Environment-specific files (optional)
+.env
+.env.*  # .env.local, .env.production, etc.
+
+# Angular CLI environment-specific files
+.angular/
+
+# Temporary files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Others
+*.log

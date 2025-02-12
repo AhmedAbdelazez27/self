@@ -1,0 +1,23 @@
+.form-control{
+    padding: .10rem .75rem;
+}
+
+.h5,h5,.h2,h2{
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+.material-symbols-outlined{
+    vertical-align: middle; /* Align the icon vertically */
+    margin-right: 5px;
+}
+.mat-dialog-container{
+    width: 70% !important;
+} 
+.table td, .table th {
+    padding: 0.25rem;
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+}

@@ -1,0 +1,166 @@
+<div class="profile-wrapper">
+  <!-- Loading Overlay -->
+  <app-insideloader *ngIf="loadingOverlay"></app-insideloader>
+  <!-- =============== -->
+  <div class="form" *ngIf="personData && !loadingOverlay">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="card-title">{{'Profile.Salary' | translate }}</h5>
+          <!-- <fa-icon *ngIf="!viewRequest" class="ico text-primary fa-2x" [icon]="addIcon" (click)="addVisa()"></fa-icon> -->
+        </div>
+        <div class="table-responsive mt-3">
+          <table class="table" style="margin-inline-start: 0%;">
+              <thead>
+                  <tr>
+                      <th class="mat-header">{{'Profile.HrPersonId' | translate }}</th>
+                      <th class="mat-header">{{'Profile.pyPayrollTypeId' | translate }}</th>
+                      <th class="mat-header">{{'Profile.Period' | translate }}</th>
+                      <th class="mat-header">{{'Profile.StartDate' | translate }}</th>
+                      <th class="mat-header">{{'Profile.EndDate' | translate }}</th>
+                      <th class="mat-header" >{{'Profile.procedures' | translate }}</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let hrPayrolData of personData; let i = index">
+                      <input type="hidden" [value]="hrPayrolData.id" [attr.name]="'hiddenId' + i">
+                      
+                      <td class="mat-header-list">{{hrPayrolData.hrPersonName}}</td>
+                      <td class="mat-header-list">{{hrPayrolData.pyPayrollTypeName}}</td>
+                      <td class="mat-header-list">{{hrPayrolData.periodName}}</td>
+                      <td class="mat-header-list" >{{hrPayrolData.startDate}}</td>
+                      <td class="mat-header-list" >{{hrPayrolData.endDate}}</td>
+                      <td class="mat-header-list" >
+                          <fa-icon class="ico text-info" [icon]="editIcon" (click)="openPayrollModal(hrPayrolData.id)"></fa-icon>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+      
+      
+
+        <!-- <div class="row">
+            <span href="javascript:0" class="underline-link" style="color: #0274BE;"
+            (click)="opendialogHrPerson()">{{"text"}}</span>
+          </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="custom-modal" *ngIf="showModal">
+  <div class="custom-modal-content">
+    <div class="custom-modal-header">
+      <h3 class="card-title">{{ 'PayRoll.PayRollDetails' | translate }}</h3>
+      <button class="close-button" (click)="closeModal()">&times;</button>
+    </div>
+    <div class="custom-modal-body">
+      <!-- Input Fields for Payroll Details -->
+      <form [formGroup]="registerForm">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-3">
+            <label for="HrPersonNumber">{{ 'PayRoll.hrPersonNumber' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" 
+              [placeholder]="'PayRoll.hrPersonNumber' | translate" 
+              formControlName="hrPersonNumber" id="HrPersonNumber">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-3">
+            <label for="hrPersonName">{{ 'PayRoll.hrPersonName' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" 
+              [placeholder]="'PayRoll.hrPersonName' | translate" 
+              formControlName="hrPersonName" id="hrPersonName">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-3">
+            <label for="pyPayrollTypeName">{{ 'PayRoll.pyPayrollTypeName' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" 
+              [placeholder]="'PayRoll.pyPayrollTypeName' | translate" 
+              formControlName="pyPayrollTypeName" id="pyPayrollTypeName">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-3">
+            <label for="periodNameAr">{{ 'PayRoll.periodName' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" 
+              [placeholder]="'PayRoll.periodName' | translate" 
+              formControlName="periodNameAr" id="periodNameAr">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-3">
+            <label for="startDate">{{ 'PayRoll.startDate' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" 
+              [placeholder]="'PayRoll.startDate' | translate" 
+              formControlName="startDate" id="startDate">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-3">
+            <label for="endDate">{{ 'PayRoll.endDate' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" 
+              [placeholder]="'PayRoll.endDate' | translate" 
+              formControlName="endDate" id="endDate">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-3">
+         <label for="totalPay">{{ 'PayRoll.totalPay' | translate }}</label> 
+            <input type="text" class="form-control" autocomplete="off" 
+              [placeholder]="'PayRoll.totalPay' | translate" 
+              formControlName="totalPay" id="totalPay">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-3">
+            <label for="bankNameAr">{{ 'PayRoll.bank' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" 
+              [placeholder]="'PayRoll.bank' | translate" 
+              formControlName="bankNameAr" id="bankNameAr">
+          </div>
+          <div class="col-lg-4 col-md-6 mb-3">
+            <label for="accountNumber">{{ 'PayRoll.IbanNumber' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" 
+              [placeholder]="'PayRoll.IbanNumber' | translate" 
+              formControlName="accountNumber" id="accountNumber">
+          </div>
+        </div>
+      </form>
+
+      <!-- Summary Table -->
+      <div class="card mt-3">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>{{ 'PayRoll.Sourceid' | translate }}</th>
+                  <th>{{ 'PayRoll.source' | translate }}</th>
+                  <th>{{ 'PayRoll.earningAmount' | translate }}</th>
+                  <th>{{ 'PayRoll.deductionAmount' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="!payrolldetails || payrolldetails.length === 0">
+                  <td colspan="4" class="text-center">{{ 'PayRoll.noDataAvailable' | translate }}</td>
+                </tr>
+                <tr *ngFor="let item of payrolldetails">
+                  <td>{{ item.sourceId }}</td>
+                  <td>{{ item.sourceName }}</td>
+                  <td>{{ item.earningAmount }}</td>
+                  <td>{{ item.deductionAmount }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="custom-modal-footer">
+      
+      <button class="btn btn-secondary" (click)="printpayslip(selectedRow)">Print</button>
+
+      <button class="btn btn-primary"  style="margin-left: 10px;" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+  <div class="custom-modal-backdrop" (click)="closeModal()"></div>
+</div>
+
+

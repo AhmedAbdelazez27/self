@@ -1,0 +1,120 @@
+<div class="profile-wrapper" style="font-size: 14px;">
+  <!-- Loading Overlay -->
+  <app-insideloader *ngIf="loadingOverlay"></app-insideloader>
+  <!-- =============== -->
+  <div class="form" *ngIf="documentData && !loadingOverlay">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="card-title mt-2">{{ 'HrDocumentRequest.HrDocumentRequests' | translate }}</h5>
+          <fa-icon class="ico text-primary fa-2x" [icon]="addIcon" (click)="addDocument()"></fa-icon>
+        </div>
+        <div class="table-responsive mt-3">
+
+          <!--Data Table code-->
+
+          <div class="example-header">
+            <div class="search-box d-flex" mat-button aria-label="Search">
+              <mat-icon class="filter-test">search</mat-icon>
+              <input matInput class="filter-input" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </div>
+          </div>
+
+          <div class="example-container mat-elevation-z8">
+
+            <mat-table class="responsive-md responsive-sm zebra sticky-header" [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+
+
+              <ng-container matColumnDef="requestDate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'HrDocumentRequest.requestDate' | translate}}
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.requestDate}} </mat-cell>
+              </ng-container>
+
+
+              <ng-container matColumnDef="submittedTo">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{'HrDocumentRequest.SubmittedTo' | translate}}
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.submittedTo}} </mat-cell>
+              </ng-container>
+
+
+              <ng-container matColumnDef="hrPersons">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'HrDocumentRequest.HrPersonId' | translate }}
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.hrPersons}} </mat-cell>
+              </ng-container>
+
+
+              <ng-container matColumnDef="documentLkp">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'HrDocumentRequest.DocumentType' |
+                  translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.documentLkp}} </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="portalStatusLkp">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'HrDocumentRequest.StatusLkpId' | translate
+                  }}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                  <span *ngIf="row.portalStatusLkpId == 41718" style="color: green; ">{{row.portalStatusLkp}}</span>
+                  <span *ngIf="row.portalStatusLkpId == 41719" style="color: red; ">{{row.portalStatusLkp}}</span>
+                  <span *ngIf="row.portalStatusLkpId == 41717"
+                    style="color: orange; ">{{row.portalStatusLkp}}</span>
+                  <span *ngIf="row.portalStatusLkpId == 41716"
+                    style="color: rgb(197, 197, 27);">{{row.portalStatusLkp}}</span>
+                  <span *ngIf="row.portalStatusLkpId == 41721"
+                    style="color: green;">{{row.portalStatusLkp}}</span>
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="Download">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'HrDocumentRequest.Download' | translate
+                  }}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+
+                  <div style="text-align: center;"><a *ngIf="row.filePath != null" class="btn btn-sm btn-primary"
+                      href="{{ row.filePath }}" target="_blank">
+                      <i class="fa fa-download"></i></a>
+                  </div>
+
+                </mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="Actions">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'HrDocumentRequest.Actions' |
+                  translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+
+                  <div style="text-align: center;">
+                    <fa-icon *ngIf="row.portalStatusLkpId!=41716" class="fa fa-eye ico text-info ml-2"
+                      (click)="viewDocumentRequest(row)"></fa-icon>
+                    <fa-icon *ngIf="row.portalStatusLkpId==41716" class="ico text-info ml-2" [icon]="editIcon"
+                      (click)="editDocument(row)"></fa-icon>
+                    <fa-icon *ngIf="row.portalStatusLkpId==41716" class="ico text-danger ml-2" [icon]="deleteIcon"
+                      (click)="deleteDocument(row.id)"></fa-icon>
+                    <fa-icon *ngIf="row.portalStatusLkpId==41716" class="fa fa-check-circle ml-2 text-success"
+                      (click)="submitDocumentRequest(row)"></fa-icon>
+                  </div>
+
+
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;">
+              </mat-row>
+            </mat-table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
+          </div>
+
+
+
+          <!-- <div class="row">
+            <span href="javascript:0" class="underline-link" style="color: #0274BE;"
+            (click)="opendialogHrPerson()">{{"text"}}</span>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>

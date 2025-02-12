@@ -1,0 +1,99 @@
+<div class="justify-content-between align-items-center">
+    <h5 class="card-title">{{'HrEmployeeResignation.Title' | translate }}</h5>
+  </div>
+  <br>
+  <div class="row" >
+    <div class="col-xl-4 col-lg-4">
+      <div class="form-group">
+        <label for="relname">{{ 'HrEmployeeResignation.ResignationNumber' | translate }}</label>
+        <input type="text" class="form-control" autocomplete="off" id="relname"
+          [(ngModel)]="ResignationEditObj.resignationNumber" [disabled]="true">
+      </div>
+    </div>
+   
+    <div class="col-xl-4 col-lg-4">
+      <div class="form-group">
+        <label for="StatusLkpId">{{ 'Profile.StatusLkpId' | translate }}</label>
+        <input type="text" class="form-control" autocomplete="off" id="StatusLkpId"
+          [(ngModel)]="ResignationEditObj.statusLkp" [disabled]="true">
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4">
+      <div class="form-group">
+        <label (click)="picker3.open()" for="requestDate" [class.label-over]="ResignationEditObj.requestDate">{{
+          'HrEmployeeResignation.RequestDate' | translate }}</label>
+        <input class="form-control" (click)="picker3.open();" [(ngModel)]="ResignationEditObj.requestDate"
+          [matDatepicker]="picker3" id="EndDate" autocomplete="off" [disabled]="disabled">
+        <mat-datepicker #picker3></mat-datepicker>
+      </div>
+    </div>
+   
+    <!-- </div>
+  <div class="row"> -->
+   
+    <div class="col-xl-4 col-lg-4">
+      <div class="form-group">
+        <label for="hrPersonId">{{ 'HrEmployeeResignation.HrPersonId' | translate }}</label>
+        <select id="hrPersonId" class="form-control" [(ngModel)]="ResignationEditObj.hrPersonId">
+          <option *ngFor="let hrPerson of hrPersonList" [value]="hrPerson.id">{{hrPerson.text}}</option>
+        </select>
+        <!-- <input type="text" class="form-control" autocomplete="off" id="HrPersonId" [(ngModel)]="ResignationEditObj.hrPersons"
+          [disabled]="disabled"> -->
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4">
+      <div class="form-group">
+        <label for="resignationTypeLkpId">{{ 'HrEmployeeResignation.ResignationTypeLkpId' | translate }}</label>
+        <select id="resignationTypeLkpId" class="form-control" [(ngModel)]="ResignationEditObj.resignationTypeLkpId">
+          <option *ngFor="let ResignationType of hrResignationTypeList" [value]="ResignationType.id">{{ResignationType.text}}
+          </option>
+        </select>
+        <!-- <input type="text" class="form-control" autocomplete="off" id="HrVacationsTypeId"
+          [(ngModel)]="ResignationEditObj.hrVacationsTypes" [disabled]="disabled"> -->
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4">
+      <div class="form-group">
+        <label (click)="picker2.open()" for="noticeDate" [class.label-over]="ResignationEditObj.noticeDate">{{
+          'HrEmployeeResignation.NoticeDate' | translate }}</label>
+        <input class="form-control" (click)="picker2.open();" [(ngModel)]="ResignationEditObj.noticeDate"
+          [matDatepicker]="picker2" id="noticeDate" autocomplete="off" [disabled]="disabled">
+        <mat-datepicker #picker2></mat-datepicker>
+      </div>
+    </div>
+   
+  
+      
+   
+    
+    <!-- </div>
+  <div class="row"> -->
+    <div class="col-xl-4 col-lg-4">
+      <div class="form-group">
+        <label (click)="picker1.open()" for="resignationDate" [class.label-over]="ResignationEditObj.resignationDate">{{
+          'HrEmployeeResignation.ResignationDate' | translate }}</label>
+        <input class="form-control" (click)="picker1.open();" [(ngModel)]="ResignationEditObj.resignationDate"
+          [matDatepicker]="picker1" id="resignationDate" autocomplete="off" [disabled]="disabled">
+        <mat-datepicker #picker1></mat-datepicker>
+      </div>
+    </div>
+    <div class="col-xl-8 col-lg-8">
+      <div class="form-group">
+        <label for="reason">{{ 'HrEmployeeResignation.Reason' | translate }}</label>
+        <input type="text" class="form-control" autocomplete="off" id="reason" [(ngModel)]="ResignationEditObj.reason"
+          [disabled]="disabled">
+      </div>
+    </div>
+   
+    <!-- </div>
+  <div class="row"> -->
+  
+  </div>
+  
+  
+  <mat-dialog-actions class="justify-content-end">
+  
+    <button mat-button (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate
+      }}</button>
+    <button mat-raised-button color="primary" (click)="save()">{{ 'ModalMsgs.save' | translate }}</button>
+  </mat-dialog-actions>

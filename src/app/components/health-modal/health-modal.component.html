@@ -1,0 +1,60 @@
+    <div class="d-flex justify-content-between align-items-center">
+        <h5 class="card-title">{{ 'Profile.HealthCardDetails' | translate}}</h5>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">  
+            <div class="form-group">
+                <label for="healthCardTypeLkpId" [class.label-over]=" HealthCardEditObj.healthCardTypeLkpId">{{ 'Profile.HealthCardTypeLkp' | translate }}   </label>
+                <mat-select id="healthCardTypeLkpId" class="form-control"  [(ngModel)]=" HealthCardEditObj.healthCardTypeLkpId">
+                    <!-- <mat-option>
+                        <ngx-mat-select-search [formControl]="HealthCardFilterCtrl" placeholderLabel="Search" noEntriesFoundLabel="No matching results found"></ngx-mat-select-search>
+                      </mat-option> -->
+                    <mat-option *ngFor="let healthType of HealthCardList " [value]="healthType.id">{{ healthType.text }}</mat-option>
+                </mat-select>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+            <div class="form-group">
+                <label for="healthCardNumber" [class.label-over]=" HealthCardEditObj.healthCardNumber">{{ 'Profile.HealthCardNumber' | translate }} </label>
+                <input type="text" class="form-control" autocomplete="off" id="healthCardNumber" [(ngModel)]=" HealthCardEditObj.healthCardNumber">
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">  
+            <div class="form-group">
+                <label for="issuedBy" [class.label-over]="HealthCardEditObj.placeOfIssueLkpId">{{ 'Profile.IssuedBy' | translate }} </label>
+                <input type="text" autocomplete="off" id="issuedBy" class="form-control" [(ngModel)]="HealthCardEditObj.issuedBy" >         
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-4">
+            <div class="form-group">
+                <label (click)="picker55.open()" for="issueDate" [class.label-over]="HealthCardEditObj.issueDate">{{ 'Profile.DateOfIssue' | translate }}   </label>
+                <input class="form-control" (focus)="focused($event)" (blur)="blured($event,HealthCardEditObj.issueDate)"  (click)="picker55.open();" [(ngModel)]="HealthCardEditObj.issueDate" [matDatepicker]="picker55" id="issueDate" autocomplete="off">
+                <mat-datepicker #picker55></mat-datepicker>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-4">
+            <div class="form-group">
+                <label (click)="picker56.open()" for="expiryDate" [class.label-over]="HealthCardEditObj.expiryDate">{{ 'Profile.DateOfExpiry' | translate }} </label>
+                <input class="form-control" (focus)="focused($event)" (blur)="blured($event,HealthCardEditObj.expiryDate)" (click)="picker56.open();" [(ngModel)]="HealthCardEditObj.expiryDate" [matDatepicker]="picker56" id="expiryDate" autocomplete="off">
+                <mat-datepicker #picker56></mat-datepicker>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">  
+            <div class="form-group">
+                <label for="healthCardCost" [class.label-over]="HealthCardEditObj.healthCardCost">{{ 'Profile.HealthCardCost' | translate }}    </label>
+                <input type="text" class="form-control" autocomplete="off" id="healthCardCost" mask="separator" thousandSeparator="," [(ngModel)]="HealthCardEditObj.healthCardCost">
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+            <div class="form-group">
+                <label for="comments" [class.label-over]=" HealthCardEditObj.comments">{{ 'Profile.Comments' | translate }}  </label>
+                <textarea class="form-control" autocomplete="off" id="comments" [(ngModel)]="HealthCardEditObj.comments">
+                </textarea>
+            </div>
+        </div>
+    </div>
+    <mat-dialog-actions class="justify-content-end">
+        <button mat-button  (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate }}</button>
+        <button mat-raised-button color="primary" (click)="save()">{{ 'ModalMsgs.save' | translate }}</button>
+    </mat-dialog-actions>

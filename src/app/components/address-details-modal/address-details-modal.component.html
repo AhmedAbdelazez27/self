@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h5 class="card-title">{{ 'Profile.AddressDetails' | translate}}</h5>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-6">  
+        <div class="form-group">
+            <label for="addressTypeLkpId" [class.label-over]=" AddressEditObj.addressTypeLkpId">{{ 'Profile.AddressType' | translate }}</label>
+            <select id="addressTypeLkpId" class="form-control" [(ngModel)]=" AddressEditObj.addressTypeLkpId">
+                <!-- <mat-option>
+                    <ngx-mat-select-search [formControl]="AddressFilterCtrl" placeholderLabel="Search" noEntriesFoundLabel="No matching results found"></ngx-mat-select-search>
+                  </mat-option> -->
+                <option *ngFor="let AddressType of dataAddressList" [value]="AddressType.id">{{ AddressType.text }}</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="countryLkpId" [class.label-over]=" AddressEditObj.countryLkpId">{{ 'Profile.Country' | translate }} </label>
+            <select id="countryLkpId" class="form-control" [(ngModel)]=" AddressEditObj.countryLkpId">
+                <!-- <mat-option>
+                    <ngx-mat-select-search [formControl]="CountryListFilterCtrl" placeholderLabel="Search" noEntriesFoundLabel="No matching results found"></ngx-mat-select-search>
+                  </mat-option> -->
+                <option *ngFor="let countryOfIssue of issuedByCountryList " [value]="countryOfIssue.id">{{ countryOfIssue.text }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="cityLkpId" [class.label-over]=" AddressEditObj.cityLkpId">{{ 'Profile.City' | translate }}  </label>
+            <select id="cityLkpId" class="form-control"  [(ngModel)]=" AddressEditObj.cityLkpId">
+                <!-- <mat-option>
+                    <ngx-mat-select-search [formControl]="CityListFilterCtrl" placeholderLabel="Search" noEntriesFoundLabel="No matching results found"></ngx-mat-select-search>
+                  </mat-option> -->
+                <option *ngFor="let city of issuedByCityList  " [value]="city.id">{{ city.text }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="telephone" [class.label-over]="AddressEditObj.telephone">{{ 'Profile.TelePhone' | translate }}  </label>
+            <input type="text" class="form-control" autocomplete="off" id="telephone"  [(ngModel)]="AddressEditObj.telephone">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="mobile" [class.label-over]="AddressEditObj.mobile">{{ 'Profile.Mobile' | translate }}  </label>
+            <input type="text" class="form-control" autocomplete="off" id="mobile"  [(ngModel)]="AddressEditObj.mobile">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="addressDetails" [class.label-over]=" AddressEditObj.addressDetails">{{ 'Profile.AddressDetails' | translate }}   </label>
+            <textarea class="form-control" autocomplete="off" id="addressDetails" [(ngModel)]="AddressEditObj.addressDetails"></textarea>
+        </div>
+    </div>
+
+</div>
+<mat-dialog-actions class="justify-content-end">
+    <button mat-button  (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate }}</button>
+    <button mat-raised-button color="primary" (click)="save()">{{ 'ModalMsgs.save' | translate }}</button>
+</mat-dialog-actions>
+

@@ -1,0 +1,560 @@
+<!-- Loading Overlay -->
+<div class="">
+  <div class="container-fluid">
+    
+    <div class="col-md-12">
+      <!-- <button class="openbtn" onclick="openNav()">☰ Menu</button>   -->
+
+      <!-- <div class="card">
+        
+        <div class="card-header card-header-danger">
+          <h6 class="card-title" style="background-color: #000232;">Requests</h6>
+        </div>
+        <div class="card-body">
+          
+            
+             <div class="row justify-content-center"><h2 class="text-center">{{ 'Home.Welcome' | translate }}, {{ userData.firstName }}  </h2>  <h2 style="margin-left: 10px;">{{dayPart}}</h2></div>  -->
+      <!-- <h3 style="color: black; font-size: xx-large;">{{dayPart}}</h3>
+          
+
+
+            
+          
+        </div>
+      </div>
+    </div>  -->
+      <div class="row">
+
+
+
+        <div class="col-md-4 col-sm-12">
+          <h3>{{ 'HrDocumentRequest.Annualleaves' | translate }}</h3>
+          
+          
+          <div class="card" style="height: 335px !important;">
+            
+            <!-- <h3 class="card-title">Requests</h3> -->
+            <!-- <div class="card-header card-header-danger">
+            <h6 class="card-title" style="background-color: #000232;">Requests</h6>
+          </div> -->
+            <div class="card-body d-flex justify-content-center align-items-center">
+              <form>
+                <!-- <div class="row"> -->
+                  <!-- <div class="col-md-4 col-lg-4 text-center mb-3">
+                    <chart1 [sickLeave]="noOfSickLeave"></chart1>
+                    <h1 style="font-size: -webkit-xxx-large;
+                  font-family: fantasy;">{{noOfSickLeave}}</h1>
+
+                    <span>{{ 'HrDocumentRequest.Sickleaves' | translate }}</span>
+                  </div> -->
+                  <div class="pie-chart1">
+                   <div class="leave-chart">
+                   
+                    <chart1 [annualLeaveDays]="noOfAnualLeave"></chart1>
+                   </div> 
+                    <div class="leave-dec mt-3" style="margin-left: 10px;"> 
+
+                      <h5 class="card-category text-gray" style="font-size: 13px;"> {{ 'HrDocumentRequest.AnnualleavesFor' | translate }} {{currentYear}}  </h5>
+                      <span><i class="fa fa-square" style="color: red;"></i>
+                        <span style="color: #333687;font-size:0.75rem"><b> {{annualLeaveDays}} {{ 'Profile.Booked' | translate }}</b></span>
+                      </span>
+                      <br>
+                      <span><i class="fa fa-square" style="color:rgba(151,199,75,255);"></i>
+                        <span style="color: #333687;font-size:0.75rem"><b> {{noOfAnualLeave}} {{ 'Profile.DaysRemaining' | translate }}  </b></span>
+                      </span> 
+                    </div>
+                    
+                    
+                    <!-- <h1 style="font-size: -webkit-xxx-large;
+                  font-family: fantasy;">{{noOfAnualLeave}}</h1>  -->
+
+                    <!-- <span>{{ 'HrDocumentRequest.Annualleaves' | translate }}</span> -->
+                  </div>
+                  <!-- <div class="col-md-4 text-center">
+                  <h1 style="font-size: -webkit-xxx-large;
+                  font-family: fantasy;">2</h1> 
+                  <span>Resignations to approve</span>
+                </div> -->
+                  <!-- <div class="col-md-4 col-lg-4 text-center mb-3">
+                    <chart3 [LeaveRequests]="6"></chart3>
+                    <h1 style="font-size: -webkit-xxx-large;
+                  font-family: fantasy;">6</h1>
+                    <span>No of Leave Requests</span>
+                  </div> -->
+                <!-- </div> -->
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div [ngClass]="columnClass">
+
+        <div class="row">
+
+          <div class="col-md-12">
+            <h3>{{ 'HrDocumentRequest.YourProfile' | translate }}</h3>
+            <!-- <h2 class="text-center">{{ 'Home.Welcome' | translate }}, {{ userData.firstName }} </h2> -->
+            <div class="card" style="height: 335px !important;">
+
+              <div class="card-body" style="overflow: scroll">
+                <!-- <div class="card-avatar">
+                  <a href="javascript:void(0)">
+                    <div *ngIf="!userData.personPhoto">
+                      <img class="img" src="./assets/images/EmployePic.png" />
+                    </div>
+                  </a>
+                </div>
+                <h5 class="card-category text-gray">{{ lang=='ar'?userData?.fndJobLkp?.nameAr:userData?.fndJobLkp?.nameEn
+                  }} </h5>
+                  <h4 class="card-title">
+                    <a [routerLink]="['/board/profile', userData.employeeNumber]">{{ userData.fullName }}</a>
+                  </h4>
+                <h5 class="card-category text-gray">{{ userData.emailAddress }} </h5>
+                <h6 class="card-category text-gray">Employee No {{ userData.employeeNumber }} </h6>
+              </div>
+            </div> -->
+                <div class="row">
+                  <div class="col-md-6">
+
+                    <div class="mt-2" style="display: flex;">
+                      <img class="img" src="{{personPhoto}}" alt="img" style="max-width: 14%;max-height: 100%;border-radius:50%" />
+                  
+                      <div style="flex: 5; margin-bottom: 0px;">
+                          <h5 class="card-category text-gray">{{ userData?.fullName }}</h5>
+                          <span style="color: #cd3434;">{{
+                              lang == 'ar' ? userData?.fndJobLkp?.nameAr : userData?.fndJobLkp?.nameEn
+                          }}</span>
+                      </div>
+                  </div>
+                  
+
+
+
+
+                    <div class="mt-3" style="display: flex;">
+                      <div class="googleicon" style="max-width: 75%; max-height: 75%;">
+                        <div class="material-symbols-outlined" style="font-size: 20px;">
+                          check_circle
+                        </div>
+                      </div>
+
+                      <div class="content-align">
+                        <h5 class="card-category text-gray"> {{'Profile.EmploymentInformation' | translate}}</h5>
+                        <span style="color: green;">{{'Profile.Completed' | translate}}</span>
+                      </div>
+                    </div>
+                    
+                    <div class="mt-4" style="display: flex;">
+                      <div *ngIf="hasPersonal"  class="googleicon">
+                        <div class="material-symbols-outlined" style="font-size: 24px;">
+                          check_circle
+                        </div> 
+                      </div>
+                      <div *ngIf="!hasPersonal"  class="googleicon" style="background-color: #ffd9d9;">
+                        <div class="material-symbols-outlined" style="font-size: 24px;">
+                          error
+                        </div> 
+                      </div>
+
+                      <div class="content-align">
+                        <h5 class="card-category text-gray"> {{'Profile.PersonalInformation' | translate}}</h5>
+                        <span *ngIf="hasPersonal" style="color: green;">{{'Profile.Completed' | translate}}</span> 
+                        <span *ngIf="!hasPersonal" style="color: red;">{{'Profile.NotCompleted' | translate}}</span> 
+                      </div>
+                    </div>
+ 
+
+                  </div>
+
+                  <div class="col-md-6">
+
+                    <div class="mt-2" style="display: flex;">
+                      <div [ngClass]="{'googleicon': true, 'green-background': profilePercentage === 100, 'default-background': profilePercentage !== 100}">
+                          <div *ngIf="profilePercentage!=100" class="material-symbols-outlined" style="font-size: 24px;">
+                              priority_high
+                          </div>
+                          <div *ngIf="profilePercentage===100" class="material-symbols-outlined" style="font-size: 24px;">
+                            check_circle
+                        </div>
+                      </div>
+                      <div class="person">
+                          <h5>{{profilePercentage}}%</h5>
+                          <h5 class="card-category text-gray">{{'Profile.YourProfileInformation' | translate}}</h5>
+                      </div>
+                  </div>
+                  
+
+                    <div class="mt-3" style="display: flex;">
+                      <div *ngIf="hasSalary"  class="googleicon">
+                        <div class="material-symbols-outlined" style="font-size: 24px;">
+                          check_circle
+                        </div> 
+                      </div>
+                      <div *ngIf="!hasSalary"  class="googleicon" style="background-color: #ffd9d9;">
+                        <div class="material-symbols-outlined" style="font-size: 24px;">
+                          error
+                        </div> 
+                      </div>
+
+                      <div class="content-align">
+                        <h5 class="card-category text-gray"> {{'Profile.SalaryInformation' | translate}}</h5>
+                        <span *ngIf="hasSalary" style="color: green;">{{'Profile.Completed' | translate}}</span> 
+                        <span *ngIf="!hasSalary" style="color: red;">{{'Profile.NotCompleted' | translate}}</span> 
+                      </div>
+                    </div>
+
+                    <div class="mt-4" style="display: flex;">
+                      <div *ngIf="hasAddress"  class="googleicon">
+                        <div class="material-symbols-outlined" style="font-size: 24px;">
+                          check_circle
+                        </div> 
+                      </div>
+                      <div *ngIf="!hasAddress"  class="googleicon" style="background-color: #ffd9d9;">
+                        <div class="material-symbols-outlined" style="font-size: 24px;">
+                          error
+                        </div> 
+                      </div>
+
+                      <div class="content-align">
+                        <h5 class="card-category text-gray">{{'Profile.ContactInformation' | translate}}</h5>
+                        <span *ngIf="hasAddress" style="color: green;">{{'Profile.Completed' | translate}}</span> 
+                        <span *ngIf="!hasAddress" style="color: red;">{{'Profile.NotCompleted' | translate}}</span> 
+                      </div>
+                    </div>
+
+                    <div class="mt-4" style="display: flex;">
+                      <div *ngIf="hasAttachment"  class="googleicon">
+                        <div class="material-symbols-outlined" style="font-size: 24px;">
+                          check_circle
+                        </div> 
+                      </div>
+                      <div *ngIf="!hasAttachment"  class="googleicon" style="background-color: #ffd9d9;">
+                        <div class="material-symbols-outlined" style="font-size: 24px;">
+                          error
+                        </div> 
+                      </div>
+
+                      <div class="content-align">
+                        <h5 class="card-category text-gray"> {{'Profile.Documents' | translate}} </h5>
+                        <span *ngIf="hasAttachment" style="color: green;">{{'Profile.Completed' | translate}}</span> 
+                        <span *ngIf="!hasAttachment" style="color: red;">{{'Profile.NotCompleted' | translate}}</span> 
+                      </div>
+                    </div>
+
+
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+   <div class="row">
+    <div class="col-md-4">
+      <h3>{{ 'HrDocumentRequest.HrTeamMembers' | translate }}</h3>
+      <div class="card" style="height: 335px !important;">  
+        <form style="overflow-y: auto;overflow-x: hidden;">
+          <div class="card-body">
+            <div class="table-responsive table mt-3">
+              <table class="table"> 
+                <tbody>
+                  <tr *ngFor="let userData of teamData; let i = index"> 
+                    <div class="mt-2" style="display: flex;margin-bottom: 0.5rem!important;">
+
+                      <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+                        <div *ngIf="!userData.photo">
+                          <img class="img" src="./assets/images/EmployePic.png"
+                            style="max-width: 75%; max-height: 75%;" />
+                        </div>
+                      </div>
+
+                      <div style="flex: 5;">
+                        <h5 class="card-category text-gray">{{ userData.name }}</h5>
+                        <span style="color: rgb(6, 240, 6);">{{ 'Profile.Active' | translate }} </span> 
+                      
+                      </div>
+
+                    </div> 
+                  <!-- <th>
+                      <img *ngIf="getPic(attachment.filePath) == 1" class="att-img ml-2"
+                          src="{{attachment.filePath}}" alt="img" width="80px"
+                          height="80px">
+                      <img *ngIf="getPic(attachment.filePath) == 2" class="att-img ml-2"
+                          src="./assets/images/file.png" alt="img" width="80px"
+                          height="80px">
+                  </th> -->
+                  
+                  </tr>
+    
+                </tbody>
+              </table>
+            </div>
+     
+          </div>
+        
+  
+  
+          
+        </form>
+    </div>
+  </div> 
+  <div class="col-md-4">
+    <h3>{{ 'HrDocumentRequest.HrDocumentRequests' | translate }}</h3>
+    <div class="card" style="height: 335px !important;">  
+      <form style="overflow-y: auto;overflow-x: hidden;">
+        <div class="card-body">
+          <div class="table-responsive table mt-3">
+            <table class="table"> 
+              <thead>
+                <tr>
+                  <th style="color: #124a6b">  {{ 'HrDocumentRequest.SubmittedTo' | translate }}</th>
+                  <th style="color: #124a6b">{{ 'HrDocumentRequest.DocumentType' | translate }}  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let hrDocument of documentData.documentRequest; let i = index">
+                  <td  style="color: #124a6b;">{{ hrDocument.submittedTo }}</td>
+                  <td>
+                    <div class="content-align">
+                      <h5 class="card-category text-gray">{{ hrDocument.documentLkp }}</h5>
+                      <span *ngIf="hrDocument.statusLkpId == 41697" style="color: rgb(5, 243, 5);">
+                        {{ hrDocument.fndStatusLkp }}
+                      </span>
+                      <span *ngIf="hrDocument.statusLkpId == 41696" style="color:red;">
+                        {{ hrDocument.fndStatusLkp }}
+                      </span>
+                    </div>
+                  </td>
+                  <td style="text-align: center;">
+                    <a *ngIf="hrDocument.filePath != null" class="btn btn-sm btn-primary" href="{{ hrDocument.filePath }}" target="_blank">
+                      <i class="fa fa-download"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </div>
+   
+        </div>
+      
+
+
+        
+      </form>
+  </div>
+</div> 
+<div class="col-md-4"> 
+  <h3>{{ 'HrDocumentRequest.UpcomingDates' | translate }}</h3>
+  <div class="card" style="height: 335px !important;">  
+    <form style="overflow-y: auto;overflow-x: hidden;">
+      <div class="card-body">
+        <div class="table-responsive table mt-3">
+          <table class="table"> 
+            <tbody>
+              <tr *ngFor="let hrleave of leaveRequestData; let i = index">
+                <!-- <th>{{ hrDocument.submittedTo }}</th> -->
+                <!-- <th>{{ hrDocument.hrPersons }}</th> --> 
+                <div class="d-flex flex-column mt-3">
+                  <div class="d-flex justify-content-between align-items-center">
+                      <span>{{ hrleave.startDate}}</span>
+                      <h5 class="document-title">{{ hrleave.hrVacationsTypes.vacationsTypeName}}</h5>
+                  </div>
+                </div>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+ 
+      </div>
+    
+
+
+      
+    </form>
+</div>
+</div>
+   </div>
+   
+    <div class="profile-wrapper">
+      <!-- Loading Overlay -->
+      <app-insideloader *ngIf="loadingOverlay"></app-insideloader>
+      <!-- =============== -->
+      <!-- <div class="form" *ngIf="userData && !loadingOverlay">
+        <div class="card">
+          <h3 style="text-align: center;
+          margin-top: 15px">{{ 'Home.HrOperations' | translate }}</h3> -->
+          <!-- <div class="card-header card-header-danger" style="padding: 5px !important;">
+        <h4 class="card-title" style="background-color: #0274BE;">{{ 'Home.HrOperations' | translate }}</h4>
+      
+      </div> -->
+          <!-- <hr class="bold-hr">
+          <div class="card-body2"> -->
+
+
+
+
+
+<!-- 
+            <br>
+
+            <div class="row row-regular">
+              <div class="col-xl-3 col-lg-3 justify-content-center">
+                <a class="card" style="border: 1px solid #0274BE !important;" routerLink="/board/profile">
+                  <div class="card-body" style="font-size:large; text-align: center;">
+                    <i class="fas fa-address-card" style="font-size: large !important;"></i><br>
+                    <span>{{ 'Profile.Profilepersonly' | translate }}</span>
+                  </div>
+                </a>
+              </div> -->
+              <!-- <div class="col-xl-4 col-lg-4  justify-content-center">
+            <button mat-button class="x-large btn btn-primary" routerLink="/board/profile">
+              <i class="fas fa-address-card" style="font-size: x-large !important;"></i><br>
+              <span>{{ 'Profile.Profilepersonly' | translate }}</span>
+
+            </button>
+          </div> -->
+              <!-- <div class=" card col-xl-4 col-lg-4 d-flex justify-content-center">
+            <button mat-button class="mainCardbtn" routerLink="/board/profile">
+              <i class="fas fa-address-card" id="sizeIcon"></i><br>
+              <span>{{ 'Profile.Profilepersonly' | translate }}</span>
+            </button>
+          </div> -->
+              <!-- <div class="card col-xl-4 col-lg-4 d-flex justify-content-center">
+            <button mat-button class="mainCardbtn" routerLink="/board/HrVacationsTypes">
+              <i class="fas fa-calendar-alt" id="sizeIcon"></i><br>
+              <span>{{ 'Profile.Holiday' | translate }}</span>
+            </button>
+          </div> -->
+              <!-- <div class="col-xl-3 col-lg-3 justify-content-center">
+                <a class="card" style="border: 1px solid #0274BE !important;" routerLink="/board/HrVacationsTypes">
+                  <div class="card-body" style="font-size: large; text-align: center;">
+                    <i class="fas fa-calendar-alt" style="font-size: large !important;"></i><br>
+                    <span>{{ 'Profile.Holiday' | translate }}</span>
+                  </div>
+                </a>
+              </div> -->
+              <!-- <button mat-button class="x-large btn btn-primary" routerLink="/board/HrVacationsTypes">
+            <i class="fas fa-calendar-alt" style="font-size: x-large !important;"></i><br>
+            <span>{{ 'Profile.Holiday' | translate }}</span>
+
+          </button> -->
+              <!-- <div class="card col-xl-4 col-lg-4 d-flex justify-content-center">
+            <button mat-button class="mainCardbtn" routerLink="/board/HrPyPayrollOperations">
+              <i class="fas btn-size fa-money-check-alt" id="sizeIcon"></i> <br>
+              <span>{{ 'Profile.Salary' | translate }}</span>
+            </button>
+
+          </div> -->
+              <!-- <button mat-button class="x-large btn btn-primary" routerLink="/board/HrPyPayrollOperations">
+            <i class="fas btn-size fa-money-check-alt" style="font-size: x-large !important;"></i><br>
+            <span>{{ 'Profile.Salary' | translate }}</span>
+
+          </button> -->
+              <!-- <div class="col-xl-3 col-lg-3 justify-content-center">
+                <a class="card" style="border: 1px solid #0274BE !important;" routerLink="/board/HrPyPayrollOperations">
+                  <div class="card-body" style="font-size: large; text-align: center;">
+                    <i class="fas btn-size fa-money-check-alt" style="font-size: large !important;"></i><br>
+                    <span>{{ 'Profile.Salary' | translate }}</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-xl-3 col-lg-3 justify-content-center">
+                <a class="card" style="border: 1px solid #0274BE !important;" routerLink="/board/VacationRequests">
+                  <div class="card-body" style="font-size: large; text-align: center;">
+                    <i class="fas fa-calendar-alt" style="font-size: large !important;"></i><br>
+                    <span>{{ 'Profile.Requests' | translate }}</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="row row-regular"> -->
+              <!-- <div class="card col-xl-4 col-lg-4 d-flex justify-content-center">
+            <button mat-button class="mainCardbtn" routerLink="/board/VacationRequests">
+              <i class="fas fa-calendar-alt" id="sizeIcon"></i><br>
+              <span>{{ 'Profile.Requests' | translate }}</span>
+            </button>
+          </div> -->
+              <!-- <div class="col-xl-4 col-lg-4 justify-content-center">
+                <a class="card" style="border: 1px solid #0274BE !important;" routerLink="/board/HrDocumentRequests">
+                  <div class="card-body" style="font-size: medium; text-align: center;">
+                    <i class="fa fa-list-alt" style="font-size: medium !important;"></i><br>
+                    <span>{{ 'Profile.Documentrequests' | translate }}</span>
+                  </div>
+                </a>
+              </div> -->
+              <!-- <div class="card col-xl-4 col-lg-4 d-flex justify-content-center">
+            <button mat-button class="mainCardbtn" routerLink="/board/HrDocumentRequests">
+              <i class="fa fa-list-alt" id="sizeIcon"></i><br>
+              <span>{{ 'Profile.Documentrequests' | translate }}</span>
+            </button>
+          </div> -->
+              <!-- <div class="card col-xl-4 col-lg-4 d-flex justify-content-center">
+            <button mat-button class="mainCardbtn" routerLink="/board/HrDocumentRequestApprove">
+              <i class="fas fa-calendar-alt" id="sizeIcon"></i><br>
+              <span>{{ 'Profile.Approvalofdocumentrequests' | translate }}</span>
+            </button>
+          </div> -->
+              <!-- <div class="col-xl-4 col-lg-4">
+                <a class="card" style="border: 1px solid #0274BE;" routerLink="/board/HrDocumentRequestApprove">
+                  <div class="card-body" style="font-size: large; text-align: center;">
+                    <i class="fas fa-calendar-alt" style="font-size: x-large !important;"></i><br>
+                    <span>{{ 'Profile.Approvalofdocumentrequests' | translate }}</span>
+                  </div>
+                </a>
+              </div> -->
+              <!-- <div class="col-xl-4 col-lg-4">
+                <a class="card" style="border: 1px solid #0274BE important;" routerLink="/board/password">
+                  <div class="card-body" style="font-size:medium; text-align: center;">
+                    <i class="fas fa-lock" style="font-size: medium !important;"></i><br>
+                    <span>{{ 'Profile.changePassword' | translate }}</span>
+                  </div>
+                </a>
+              </div>
+            </div> -->
+
+
+
+            <!-- <div class="row row-regular" style="text-align: center;"> -->
+              <!-- <div class="card card col-xl-5 col-lg-5 d-flex justify-content-center">
+            <button mat-button class="mainPassbtn" routerLink="/board/password">
+              <i class="fas fa-lock"></i><br>
+              <span>{{ 'Profile.ChangePassword' | translate }}</span>
+
+            </button>
+          </div> -->
+              <!-- <div class="col-xl-4 col-lg-4">
+            <div class=" ">
+              <div class="">
+                <button mat-button class="x-large btn btn-primary" routerLink="/board/password">
+                  <i class="fas fa-lock" style="font-size: x-large !important;"></i><br>
+                  <span>{{ 'Profile.ChangePassword' | translate }}</span>
+
+                </button>
+                
+              </div>
+            </div>
+          </div> -->
+              <!-- <div>
+                <h2></h2>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div> -->
+
+    </div>

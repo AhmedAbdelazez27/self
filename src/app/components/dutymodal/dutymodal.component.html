@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h5 class="card-title">{{ 'AddRequest.requestDuties' | translate}}</h5>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-6">  
+        <div class="form-group">
+            <label for="scDutiesId" [class.label-over]="DutiesEditObj.scDutiesId">{{ 'AddRequest.requestDutyType' | translate }}</label>
+            <select id="scDutiesId" class="form-control" [(ngModel)]="DutiesEditObj.scDutiesId" >
+                <option *ngFor="let ScDuties of dataScDutiesList" [value]="ScDuties.id">{{ ScDuties.text }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="dutyDescription" [class.label-over]="DutiesEditObj.dutyDescription">{{ 'AddRequest.requestDutyDescription' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="dutyDescription" [(ngModel)]="DutiesEditObj.dutyDescription">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="monthlyAmount" [class.label-over]="DutiesEditObj.monthlyAmount">{{ 'AddRequest.requestMonthlyFees' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="monthlyAmount" mask="separator" thousandSeparator="," [(ngModel)]="DutiesEditObj.monthlyAmount">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="totalAmount" [class.label-over]="DutiesEditObj.totalAmount">{{ 'AddRequest.requestTotalAmount' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="totalAmount" mask="separator" thousandSeparator="," [(ngModel)]="DutiesEditObj.totalAmount">
+        </div>
+    </div>
+</div>
+<mat-dialog-actions class="justify-content-end">
+    <button mat-button  (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate }}</button>
+    <button mat-raised-button color="primary" (click)="save()">{{ 'ModalMsgs.save' | translate }}</button>
+</mat-dialog-actions>

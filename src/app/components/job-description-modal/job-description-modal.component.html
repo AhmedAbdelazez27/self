@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h5 class="card-title m-0">{{ 'Profile.JobDescription' | translate }}</h5>
+</div>
+<div class="row">
+    
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="relname" [class.label-over]="JobAttachmentEditObj.jobAttachmentName">{{ 'Profile.JobAttachmentName' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" id="relname" [(ngModel)]="JobAttachmentEditObj.jobAttachmentName">
+        </div>
+    </div>
+    
+    
+       
+    <div class="col-lg-4 col-md-6"> 
+            <div class="col-sm-6">
+                
+                    
+                <div class="custom-file">
+                    <label for="relname" >{{ 'Profile.File' | translate }}</label>
+                    <input type="file" class="bi bi-upload" [class.is-invalid]="JobAttachmentEditObj.filePath" (change)="onFileChange($event,JobAttachmentEditObj.id)" [(ngModel)]="JobAttachmentEditObj.filePath" id="customFile{{ JobAttachmentEditObj.id }}">
+                    
+                </div>
+            </div>
+             
+        
+      </div>
+ 
+
+
+</div>
+
+<mat-dialog-actions class="justify-content-end">
+    <button mat-button  (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate }}</button>
+    <button mat-raised-button color="primary" (click)="save()" >{{ 'ModalMsgs.save' | translate }}</button>
+</mat-dialog-actions>

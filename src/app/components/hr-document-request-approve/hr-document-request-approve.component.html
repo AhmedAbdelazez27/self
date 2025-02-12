@@ -1,0 +1,58 @@
+<div class="profile-wrapper">
+    <!-- Loading Overlay -->
+    <app-insideloader *ngIf="loadingOverlay"></app-insideloader>
+    <!-- =============== -->
+    <div class="form" *ngIf="documentData && !loadingOverlay" >
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title">{{ 'HrDocumentRequest.HrDocumentRequestAproval' | translate }}</h5>
+            <!-- <fa-icon  class="ico text-primary fa-2x" [icon]="addIcon" (click)="addDocument()"></fa-icon> -->
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">{{'HrDocumentRequest.SubmittedTo' | translate}}</th>
+                  <th scope="col">{{'HrDocumentRequest.HrPersonId' | translate }}</th>
+                  <th scope="col">{{'HrDocumentRequest.DocumentType' | translate}}</th>
+                  <th scope="col">{{'HrDocumentRequest.Description' | translate}} </th>
+                  <th scope="col">{{'HrDocumentRequest.StatusLkpId' | translate }}</th>
+                  <th scope="col">{{'HrDocumentRequest.Download' | translate}}</th>
+                  <th scope="col"></th>
+                  
+
+                   
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let hrDocument of documentData; let i = index">
+                  <th>{{ hrDocument.submittedTo }}</th>
+                  <th>{{ hrDocument.hrPersons }}</th>
+                  <th>{{ hrDocument.documentLkp}}</th>
+                  <th>{{ hrDocument.desc }}</th>
+                  <th>{{ hrDocument.fndStatusLkp }}</th>
+                  <th>{{ hrDocument.filePath }}</th>
+                  <th><button class="btn btn-link" (click)="ViewDocument(i)"><b>View</b></button></th>
+                  <td >
+                    <fa-icon *ngIf="hrDocument.statusLkpId==11423" class="ico text-info" [icon]="aprovedicon"
+                         ></fa-icon>
+                         <!-- <button *ngIf="hrDocument.statusLkpId!=11423"  mat-stroked-button color="primary"  (click)="editDocumentForApproval(i)">Upload</button> -->
+                        <!-- <fa-icon *ngIf="hrDocument.statusLkpId!=11423" fa-alt="click to approve" class="ico text-info ml-2" [icon]="approveicon"
+                        (click)="ApproveDocumentRequest(i)"></fa-icon> -->
+                         
+                </td><button *ngIf="hrDocument.statusLkpId!=11423"  mat-stroked-button color="primary"  (click)="ApproveDocumentRequest(hrDocument.id)">{{'HrDocumentRequest.Approve' | translate}}</button>
+                </tr>
+  
+              </tbody>
+            </table>
+          </div>
+  
+          <!-- <div class="row">
+            <span href="javascript:0" class="underline-link" style="color: #0274BE;"
+            (click)="opendialogHrPerson()">{{"text"}}</span>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>

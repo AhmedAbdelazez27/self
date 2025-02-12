@@ -1,0 +1,476 @@
+header {
+  position: relative;
+}
+.btn-custom:focus,
+.btn-reg:focus,
+.btn-submit:focus,
+.btn-log:focus {
+  box-shadow: none;
+}
+.btn-custom {
+  color: #0274be;
+  background: #fff;
+  padding: 12px 30px;
+  font-weight: bold;
+  border-radius: 30px;
+  outline: none;
+  box-shadow: none;
+}
+span.underline-link {
+  text-decoration: none; /* Remove the default underline */
+  cursor: pointer;
+}
+
+span.underline-link:hover {
+  text-decoration: underline; /* Apply underline on hover */
+}
+.btn-reg {
+  color: #fff;
+  box-shadow: -2px 5px 19px 0 rgba(0, 0, 0, 0.25);
+  background-image: linear-gradient(73deg, #0274be 12%, #0274be 95%);
+  padding: 12px 30px;
+  font-weight: bold;
+  border-radius: 30px;
+  display: block;
+  margin: auto;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.btn-submit {
+  color: #fff;
+  box-shadow: -2px 5px 19px 0 rgba(0, 0, 0, 0.25);
+  background-image: linear-gradient(73deg, #124a6b 12%, #91a0b9 95%);
+  padding: 12px 30px;
+  font-weight: bold;
+  border-radius: 30px;
+  margin: 10px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.btn-log {
+  color: #124a6b;
+  background: transparent;
+  padding: 12px 30px;
+  font-weight: bold;
+  border-radius: 30px;
+  border: 2px solid #124a6b;
+  margin: 10px;
+  outline: none;
+  box-shadow: none;
+}
+.background-curved {
+  position: absolute;
+  width: 60%;
+  height: 90%;
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 0, 100% 0%, 80% 90%, 0% 100%);
+  background-repeat: no-repeat;
+  background-blend-mode: normal, multiply;
+  background-position: 30% 100%;
+  /* background: radial-gradient(circle at 12% 86%, rgba(205, 31, 36, 0.8), rgba(240, 110, 33, 0.8) 93%), linear-gradient(51deg, #cd1f24 13%, #f06e21 94%), url('/assets/images/arabic-family4.jpg') no-repeat; */
+  background-size: 120%;
+  background-position: 25% 0%;
+  z-index: 0;
+}
+.first-section .top {
+  margin-bottom: 100px;
+}
+.first-section .middle h2 {
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+.first-section .middle h1 {
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.first-btns {
+  display: flex;
+}
+.first-btns a {
+  margin: 0px 5px;
+}
+.first-btns .main {
+  color: #fff;
+  box-shadow: -2px 5px 19px 0 rgba(0, 0, 0, 0.25);
+  background-image: linear-gradient(73deg, #0274be 12%, #0274be 95%);
+}
+.first-btns .second {
+  border-style: solid;
+  border-width: 2px;
+  border-image-slice: 1;
+  color: #000000;
+}
+.icons a {
+  color: #fff;
+  display: inline-block;
+  margin: 5px 0px;
+  border-radius: 30px;
+}
+.icons .ico {
+  padding: 10px 0px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  font-size: 20px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  margin: 0px 5px;
+}
+.icons span {
+  display: none;
+}
+.icons a:hover {
+  color: #124a6b;
+  background: #fff;
+  box-shadow: -2px 5px 19px 0 rgba(0, 0, 0, 0.25);
+}
+.icons a:hover span {
+  display: inline-block;
+}
+/* Slider */
+.slider {
+  width: 100%;
+  margin: 70px 0px;
+}
+.slider .slide {
+  width: 335px;
+  /* height: 215px; */
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px 0 rgba(3, 12, 28, 0.2);
+  padding: 40px;
+  background-color: #fff;
+  margin: 35px 0px;
+  transition: 0.2s;
+}
+.slider .slide img {
+  width: 50px;
+  height: 50px;
+}
+.slider .slide:hover {
+  background-blend-mode: normal, multiply;
+  background: radial-gradient(
+      circle at 12% 86%,
+      rgba(31, 86, 205, 0.8),
+      rgba(33, 116, 240, 0.8) 93%
+    ),
+    linear-gradient(51deg, #0274be 13%, #0274be 94%),
+    url("/assets/images/arabic-family3.jpg") no-repeat;
+  background-size: 135%;
+  background-position: 10% 100%;
+  transform: translateY(-30px);
+}
+.slider .slide:hover img {
+  filter: invert(6) sepia(4) saturate(0) hue-rotate(360deg) brightness(6);
+}
+.slider .slide:hover h4 {
+  color: #fff;
+}
+.slider .slide:hover small {
+  color: rgba(255, 255, 255, 0.51);
+}
+/* Second Section */
+/* .second-section {
+  margin: 100px 0px;
+  padding: 50px 0px 20px 0px;
+} */
+.headers {
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}
+.headers h4 {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: bold;
+}
+.headers h3 {
+  margin: 10px 0px 20px 0px;
+}
+.headers p {
+  color: #91a0b9;
+  line-height: 2.5;
+}
+
+/* Login Form */
+body {
+  background-color: #001645;
+}
+
+.login-container {
+  background-color: white;
+  border-radius: 25px;
+  padding: 40px;
+  margin-top: -20%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-login {
+  width: 250px;
+}
+
+h1 {
+  color: #333B69;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333B69;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group-prepend .input-group-text {
+  background-color: transparent;
+  border: none;
+}
+
+.form-control.input-lg {
+  font-size: 15px;
+  border-radius: 15px; 
+  width: 50px;
+  height: 50px;
+}
+
+.log-ico {
+  width: 20px;
+  height: 20px;
+}
+
+
+.blue {
+  color: #1285B9;
+}
+.input-lg {
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  
+}
+
+.btn-blue {
+  background-color: #1285B9;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-blue:hover {
+  background-color: #005f87;
+}
+
+.options {
+  margin-top: 10px;
+}
+
+.options a {
+  color: #1285B9;
+  text-decoration: none;
+}
+
+.options a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+  .logo-login {
+    width: 270px;
+  }
+}
+
+
+/* Register Form */
+.register-form {
+  background-color: #d2dbe1;
+  padding: 50px 100px;
+  border-radius: 100px;
+  border-bottom-left-radius: 10px;
+}
+.register-form h1 {
+  text-align: center;
+  margin: 10px 0px 40px;
+}
+.register-form h1 img {
+  margin: 0px 15px;
+}
+.register-form input,
+.register-form select {
+  width: 100%;
+  padding: 15px 50px;
+  border-radius: 30px;
+  border: 2px solid #124a6b;
+  background: transparent;
+  color: #124a6b;
+  margin: 13px 0px;
+  outline: none;
+}
+.register-form select {
+  padding: 15px 50px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.register-form select::-ms-expand {
+  display: none;
+}
+.select-wrapper:after {
+  content: "\25BC";
+  left: 20px;
+  top: 30px;
+  font-size: 18px;
+  padding: 0px 12px;
+  position: absolute;
+  pointer-events: none;
+  border-width: 0 3px 3px 0;
+  color: #124a6b;
+}
+.register-form input::placeholder {
+  color: #124a6b;
+}
+.register-form .log-ico {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}
+.register-form input.is-invalid,
+.register-form select.is-invalid,
+.login-form input.is-invalid {
+  border: 2px solid #0274be;
+}
+/* Footer */
+footer .icons a {
+  margin: 5px;
+}
+footer .icons a:hover {
+  color: #0274be;
+}
+.background-curved-footer {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  clip-path: polygon(0 0%, 70% 20%, 80% 100%, 0% 100%);
+  background: radial-gradient(
+      circle at 12% 86%,
+      rgba(31, 86, 205, 0.8),
+      rgba(33, 116, 240, 0.8) 93%
+    ),
+    linear-gradient(51deg, #0274be 13%, #f06e21 94%);
+  z-index: 0;
+}
+footer h4 {
+  color: #fff;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.second-section {
+  margin-top: 80px;
+  margin-bottom: 70px;
+}
+.header-lang{
+  padding-top: 30px;
+}
+
+/* Media Query  */
+
+
+/* Mobile Responsive */
+
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .logo-login {
+    width: 100%;
+    margin-bottom: 10%;
+  }
+  .first-section {
+    text-align: center;
+  }
+  .first-section .top {
+    margin-bottom: 50px;
+  }
+  .first-btns {
+    justify-content: center;
+  }
+  .icons {
+    text-align: center;
+    padding-left: 5px;
+    display:flex;
+  }
+  .icons a {
+    margin: 5px 10px;
+  }
+  .icons a:hover span {
+    display: none;
+  }
+  .icons button {
+    margin: 0px auto;
+  }
+  .icons .ico {
+    margin: 0;
+  }
+  .background-curved {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0%;
+    background-repeat: no-repeat;
+    background-blend-mode: normal, multiply;
+    background-position: 30% 100%;
+    /* background: radial-gradient(circle at 12% 86%, rgba(205, 31, 36, 0.8), rgba(240, 110, 33, 0.8) 93%), linear-gradient(51deg, #cd1f24 13%, #f06e21 94%), url('/assets/images/arabic-family4.jpg') no-repeat; */
+    background-size: 100%;
+    background-position: center;
+    z-index: -1;
+    clip-path: none;
+  }
+  .slider .slide {
+    margin: 35px auto;
+  }
+  .headers {
+    width: 80%;
+  }
+  .login-form {
+    padding: 35px 25px;
+    border-radius: 50px;
+    border-bottom-left-radius: 10px;
+  }
+  .login-form .options {
+    justify-content: center;
+  }
+  footer h4 {
+    margin: 0px 0px 10px 0px;
+  }
+  .background-curved-footer {
+    width: 100%;
+    height: 40%;
+    clip-path: none;
+  }
+  footer .icons {
+    padding-bottom: 0px;
+  }
+  .header-lang{
+    padding: 0px 25px 45px 10px;
+
+  }
+  .second-section {
+    margin-top: 15px;
+    margin-bottom: 100px;
+  }
+} 

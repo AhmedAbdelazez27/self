@@ -1,0 +1,48 @@
+<div class="profile-wrapper">
+    <!-- Loading Overlay -->
+    <app-insideloader *ngIf="loadingOverlay"></app-insideloader>
+    <!-- =============== -->
+    <div class="form" *ngIf="personData && !loadingOverlay">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="card-title">رواتب الموظفين</h5>
+            <!-- <fa-icon *ngIf="!viewRequest" class="ico text-primary fa-2x" [icon]="addIcon" (click)="addVisa()"></fa-icon> -->
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">رقم الموظف</th>
+                  <th scope="col">الموظف</th>
+                  <th scope="col">صافي الراتب </th>
+                  
+
+                  <th scope="col">{{'Profile.procedures' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let hrPersonData of personData; let i = index">
+                  <th>{{hrPersonData.hrPersonNumber}}</th>
+                  <th>{{hrPersonData.fullName}}</th>
+                  <th>{{hrPersonData.payrollNetValue}}</th>
+                  
+                  <td >
+                    <fa-icon class="ico text-info" [icon]="showDetil"
+                    (click)="editPerson2(i,hrPersonData.id)"></fa-icon>
+                    
+                </td>
+                </tr>
+  
+              </tbody>
+            </table>
+          </div>
+  
+          <!-- <div class="row">
+            <span href="javascript:0" class="underline-link" style="color: #0274BE;"
+            (click)="opendialogHrPerson()">{{"text"}}</span>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>

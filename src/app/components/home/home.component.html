@@ -1,0 +1,147 @@
+<div class="page-wrapper" style="background-color: #001645;">
+    <!-- Loading Overlay -->
+    <app-loading *ngIf="loadingOverlay"></app-loading>
+    <!-- =============== -->
+    <section class="first-section">
+        <header class="header-lang ">
+            <!-- <div class="background-curved d-none d-md-block"
+            style="background: radial-gradient(circle at 12% 86%, rgba(31, 86, 205, 0.8), rgba(33, 116, 240, 0.8) 93%), linear-gradient(51deg, #0274BE 13%, #f06e21 94%), url('./assets/images/arabic-family4.jpg') no-repeat;">
+            </div> -->
+            <div class="container top">
+                <div class="row no-gutters">
+                    <div class="col-md-6">
+                        <a href="javascript:;">
+                            <!-- <img src="{{filePath}}" alt="img" width="260" height="200" viewBox="0 0 260 176"> -->
+                        </a>
+                    </div>
+                    <div class="col-md-6 text-right d-none d-md-block">
+                        <a class="btn btn-custom" href="javascript:;" (click)="goToLogin()">{{ 'Home.login' | translate
+                            }}</a>
+                        <a *ngIf="lang == 'ar'" class="btn btn-custom ml-3" href="javascript:;"
+                            (click)="changeLang('en')" style="padding: 12px 20px;">E</a>
+                        <a *ngIf="lang == 'en'" class="btn btn-custom ml-3" href="javascript:;"
+                            (click)="changeLang('ar')" style="padding: 12px 20px;">ع</a>
+                    </div>
+                </div>
+            </div>
+            <div class="middle" [class.container]="isLargeScreen()">
+                <div class="row no-gutters">
+
+                    <div class="col-md-6 text-center text-md-right mt-md-0">
+                        <!-- <div class="background-curved d-block d-md-none"
+                            style="background: radial-gradient(circle at 12% 86%, rgba(31, 86, 205, 0.8), rgba(33, 116, 240, 0.8) 93%), linear-gradient(51deg, #0274BE 13%, #0274BE 94%), url('./assets/images/arabic-family4.jpg') no-repeat;">
+                        </div> -->
+                        <div class="icons">
+                            <button class="login-button btn btn-custom d-block d-md-none" href="javascript:;" style="margin-right: 8px;white-space: nowrap;"
+                                (click)="goToLogin()">{{ 'Home.login' | translate }}</button>
+                            <button *ngIf="lang == 'ar'" class="btn btn-custom d-block d-md-none" href="javascript:;"
+                                (click)="changeLang('en')" style="padding: 12px 20px; margin: 0px;">E</button>
+                            <button *ngIf="lang == 'en'" class="btn btn-custom d-block d-md-none" href="javascript:;"
+                                (click)="changeLang('ar')" style="padding: 12px 20px; margin: 0px">ع</button>
+                            <!-- <div class="d-inline-block d-md-block" *ngFor=" let icon of icons">
+                                <a class="pl-md-3 pl-0" [href]="icon.link" target="_blank">
+                                    <span>{{ icon.name }}</span>
+                                    <fa-icon class="ico" [icon]="icon.icon"></fa-icon>
+                                </a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+    </section>
+    <section class="second-section" id="login">
+        <div class="headers">
+            <!-- <h4>{{ 'Home.header4' | translate }}</h4> -->
+
+        </div>
+        <!-- Login Form  -->
+        <div class="container" *ngIf="!showRegister">
+            
+            <div class="login-form">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="login-container">
+                            <div class="text-center">
+                                <img src="./assets/images/WHITE BACKGROUND.jpg" class="logo-login" />
+                            </div>
+                            <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()" (keyup.enter)="onSubmitLogin()">
+                                <h2 style="margin-bottom:25px;font-weight: bolder;">{{ 'LoginForm.Login' | translate }}</h2>
+                                <div class="form-group p-relative">
+                                    <label for="email" style="font-weight: bold;">{{ 'LoginForm.username' | translate }}</label>
+                                    <div class="input-group" style="margin-bottom:24px;">
+                                        <!-- <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <img class="log-ico" src="./assets/images/username.svg" alt="img">
+                                            </span>
+                                        </div> -->
+                                        <input type="text" class="form-control input-lg" id="email"
+                                            placeholder="{{ 'LoginForm.username' | translate }}" autocomplete="off"
+                                            formControlName="email" [ngClass]="{ 'is-invalid': submittedLogin && l.email.errors }">
+                                    </div>
+                                </div>
+                                <div class="form-group p-relative">
+                                    <label for="password" style="font-weight: bold;">{{ 'LoginForm.password' | translate }}</label>
+                                    <div class="input-group">
+                                        <!-- <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <img class="log-ico" src="./assets/images/password.svg" alt="img">
+                                            </span>
+                                        </div> -->
+                                        <input type="password" class="form-control input-lg" id="password"
+                                            placeholder="{{ 'LoginForm.password' | translate }}" autocomplete="off"
+                                            formControlName="password" [ngClass]="{ 'is-invalid': submittedLogin && l.password.errors }">
+                                    </div>
+                                </div>
+                                <div class="options">
+                                    <a href="javascript:;" (click)="showForgetPassword()">
+                                        <h4 href="#" class="blue" style="font-size:16px;margin-bottom: 30px;">{{ 'LoginForm.forgetPassword' | translate }}</h4>
+                                    </a>
+                                </div>
+                                <button class="btn btn-blue text-uppercase btn-lg btn-block" (click)="onSubmitLogin()" style="border-radius: 15px;">
+                                    {{ 'Home.login' | translate }}
+                                </button>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+
+    </section>
+    <footer class="p-relative">
+        <div class="background-curved-footer"></div>
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <div class="col-md-7 text-center">
+                    <!-- <img src="./assets/images/Fujcharity_logo.png" alt="img" width="300" height="200"
+                        viewBox="0 0 260 176"> -->
+                </div>
+                <!-- <div class="text-center">
+                <h2 class="mt-4" style="color:#2e3c5d;">كن على تواصل</h2>
+                <h2 style="color:#2e3c5d;">8008844</h2>
+                </div> -->
+                <!-- <div class="col-md-5 d-flex justify-content-center align-items-center mb-5 mb-md-0"
+                    style="height: 200px">
+                    <div>
+                        <div class="icons">
+                        <div class="d-inline-block" *ngFor=" let icon of icons">
+                                <a [href]="icon.link" target="_blank">
+                                    <fa-icon class="ico mx-0" [icon]="icon.icon"></fa-icon>
+                                </a>
+                            </div>
+                        </div>
+                         <h4>{{ 'Footer' | translate }}</h4> 
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </footer>
+</div>

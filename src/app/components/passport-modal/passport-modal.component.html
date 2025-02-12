@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h5 class="card-title">{{ 'Profile.PassportDetails' | translate}}</h5>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-6">  
+        <div class="form-group">
+            <label for="passportTypeLkpId" [class.label-over]="PassEditObj.passportTypeLkpId">{{ 'Profile.PassportType' | translate}}</label>
+            <select id="passportTypeLkpId" class="form-control"  [(ngModel)]="PassEditObj.passportTypeLkpId">
+                <!-- <mat-option>
+                    <ngx-mat-select-search [formControl]="passtypeFilterCtrl" placeholderLabel="Search" noEntriesFoundLabel="No matching results found"></ngx-mat-select-search>
+                  </mat-option> -->
+                <option *ngFor="let PassType of dataPassList " [value]="PassType.id">{{ PassType.text }}</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="passportNumber" [class.label-over]="PassEditObj.passportNumber">{{ 'Profile.PassportNumber' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="passportNumber" [(ngModel)]="PassEditObj.passportNumber">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">  
+        <div class="form-group">
+            <label for="countryOfIssueLkpId" [class.label-over]="PassEditObj.countryOfIssueLkpId">{{ 'Profile.CountryOfIssue' | translate}}</label>
+            <select id="countryOfIssueLkpId" class="form-control" [(ngModel)]="PassEditObj.countryOfIssueLkpId">
+                <!-- <mat-option>
+                    <ngx-mat-select-search [formControl]="CountryOfIssueFilterCtrl" placeholderLabel="Search" noEntriesFoundLabel="No matching results found"></ngx-mat-select-search>
+                  </mat-option> -->
+                <option *ngFor="let countryOfIssue of issuedByCountryList" [value]="countryOfIssue.id">{{countryOfIssue.text }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="placeOfIssue" [class.label-over]="PassEditObj.placeOfIssue">{{ 'Profile.PlaceOfIssue' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="placeOfIssue"  [(ngModel)]="PassEditObj.placeOfIssue">
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4">
+        <div class="form-group">
+            <label (click)="picker57.open()" for="dateOfIssue" [class.label-over]="PassEditObj.dateOfIssue">{{ 'Profile.DateOfIssue' | translate}}</label>
+            <input class="form-control" (focus)="focused($event)"   (click)="picker57.open();" [(ngModel)]="PassEditObj.dateOfIssue" [matDatepicker]="picker57" id="dateOfIssue" autocomplete="off">
+            <mat-datepicker #picker57></mat-datepicker>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4">
+        <div class="form-group">
+            <label (click)="picker58.open()" for="dateOfExpiry" [class.label-over]="PassEditObj.dateOfExpiry">{{ 'Profile.DateOfExpiry' | translate}}</label>
+            <input class="form-control" (focus)="focused($event)"  (click)="picker58.open();" [(ngModel)]="PassEditObj.dateOfExpiry" [matDatepicker]="picker58" id="dateOfExpiry" autocomplete="off">
+            <mat-datepicker #picker58></mat-datepicker>
+        </div>
+    </div>
+   
+   
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="notes" [class.label-over]=" PassEditObj.notes">{{ 'Profile.Notes' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="notes" [(ngModel)]="PassEditObj.notes">
+        </div>
+    </div>
+</div>
+<mat-dialog-actions class="justify-content-end">
+    <button mat-button  (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate }}</button>
+    <button mat-raised-button color="primary" (click)="save()">{{ 'ModalMsgs.save' | translate }}</button>
+</mat-dialog-actions>
+ 

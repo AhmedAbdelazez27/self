@@ -1,0 +1,65 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h5 class="card-title">{{ 'Profile.IdentityCardDetails' | translate}}</h5>
+</div>
+<div class="row">
+     
+    
+    <!--<div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="segment1" [class.label-over]="IdCardEditObj.segment1">segment1</label>
+            <input type="text" class="form-control" autocomplete="off" id="segment1" [(ngModel)]="IdCardEditObj.segment1">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="segment2" [class.label-over]="IdCardEditObj.segment2">segment2</label>
+            <input type="text" class="form-control" autocomplete="off" id="segment2" [(ngModel)]="IdCardEditObj.segment2">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="segment3" [class.label-over]="IdCardEditObj.segment3">segment3</label>
+            <input type="text" class="form-control" autocomplete="off" id="segment3" [(ngModel)]="IdCardEditObj.segment3">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="segment4" [class.label-over]="IdCardEditObj.segment4">segment4</label>
+            <input type="text" class="form-control" autocomplete="off" id="segment4" [(ngModel)]="IdCardEditObj.segment4">
+        </div>
+    </div>-->
+     
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="idNumber" [class.label-over]="IdCardEditObj.idNumber">{{ 'Profile.IdNumber' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="idNumber"  [(ngModel)]="IdCardEditObj.idNumber">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="cardNo" [class.label-over]="IdCardEditObj.cardNo">{{ 'Profile.HealthCardNumber' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="cardNo"  [(ngModel)]="IdCardEditObj.cardNo">
+        </div>
+    </div>
+     
+    <div class="col-xl-3 col-lg-4">
+        <div class="form-group">
+            <label (click)="picker60.open()" for="dateOfExpiry" [class.label-over]="IdCardEditObj.dateOfExpiry">{{ 'Profile.DateOfExpiry' | translate}}</label>
+            <input class="form-control"  (click)="picker60.open();" [(ngModel)]="IdCardEditObj.dateOfExpiry" [matDatepicker]="picker60" id="dateOfExpiry" autocomplete="off">
+            <mat-datepicker #picker60></mat-datepicker>
+        </div>
+    </div>
+   
+   
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="notes" [class.label-over]=" IdCardEditObj.notes">{{ 'Profile.Notes' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="notes" [(ngModel)]="IdCardEditObj.notes">
+        </div>
+    </div>
+</div>
+<mat-dialog-actions class="justify-content-end">
+    <button mat-button  (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate }}</button>
+    <button mat-raised-button color="primary" (click)="save()">{{ 'ModalMsgs.save' | translate }}</button>
+</mat-dialog-actions>
+ 

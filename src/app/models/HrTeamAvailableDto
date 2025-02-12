@@ -1,0 +1,14 @@
+export interface HrTeamAvailableResponseDto {
+    result: HrTeamAvailableDto;
+    targetUrl: string;
+    success: boolean;
+    error: string;
+    unAuthorizedRequest: boolean;
+    __abp: boolean;
+}
+export class HrTeamAvailableDto{
+    photo:string;
+    name:string;
+    status:string; 
+    id:number;
+}

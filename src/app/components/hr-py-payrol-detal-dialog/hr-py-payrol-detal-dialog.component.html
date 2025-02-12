@@ -1,0 +1,122 @@
+<div class="justify-content-between align-items-center">
+    <h5 class="card-title m-0">{{ 'PayRoll.PayRollDetails' | translate }}</h5>
+  </div>
+  <br>
+  <div class="row">
+  
+    <div class="col-xl-4 col-lg-4">
+      <div class="form-group">
+        <label for="relname1">{{ 'PayRoll.hrPersonNumber' | translate }}</label>
+        <input type="text" class="form-control" autocomplete="off" id="relname1"
+          [(ngModel)]="list2[0].hrPersonNumber" [disabled]="disabled">
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4">
+        <div class="form-group">
+          <label for="relname2">{{ 'PayRoll.hrPersonName' | translate }}</label>
+          <input type="text" class="form-control" autocomplete="off" id="relname2"
+            [(ngModel)]="list2[0].hrPersonName" [disabled]="disabled">
+        </div>
+      </div>
+    
+      <div class="col-xl-4 col-lg-4">
+        <div class="form-group">
+          <label for="relname3"> {{ 'PayRoll.pyPayrollTypeName' | translate }}  </label>
+          <input type="text" class="form-control" autocomplete="off" id="relname3"
+            [(ngModel)]="list2[0].pyPayrollTypeName" [disabled]="disabled">
+        </div>
+      </div>
+  
+    <div class="col-xl-4 col-lg-4">
+      <div class="form-group">
+        <label for="HrPersonId">{{ 'PayRoll.periodName' | translate }}</label>
+        <input type="text" class="form-control" autocomplete="off" id="HrPersonId" [(ngModel)]="list2[0].periodNameAr"
+          [disabled]="disabled">
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4">
+      <div class="form-group">
+        <label for="relname5"> {{ 'PayRoll.startDate' | translate }}  </label>
+        <input type="text" class="form-control" autocomplete="off" id="relname5"
+          [(ngModel)]="list2[0].startDate" [disabled]="disabled">
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4">
+        <div class="form-group">
+          <label for="relname4"> {{ 'PayRoll.endDate' | translate }}  </label>
+          <input type="text" class="form-control" autocomplete="off" id="relname4"
+            [(ngModel)]="list2[0].endDate" [disabled]="disabled">
+        </div>
+      </div>
+ 
+    <div class="col-xl-4 col-lg-4">
+        <div class="form-group">
+          <label for="relname6"> {{ 'PayRoll.total' | translate }}  </label>
+          <input type="text" class="form-control" autocomplete="off" id="relname6"
+            [(ngModel)]="total" [disabled]="disabled">
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-4">
+        <div class="form-group">
+          <label for="relname7">{{ 'PayRoll.bank' | translate }}</label>
+          <input type="text" class="form-control" autocomplete="off" id="relname7"
+            [(ngModel)]="list2[0].bankNameAr" [disabled]="disabled">
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-4">
+        <div class="form-group">
+          <label for="relname8"> {{ 'PayRoll.accountNumber' | translate }}   </label>
+          <input type="text" class="form-control" autocomplete="off" id="relname8"
+            [(ngModel)]="list2[0].accountNumber" [disabled]="disabled">
+        </div>
+      </div>
+  </div> 
+  <div class="form">
+    <div class="justify-content-between align-items-center">
+      <h5 class="card-title mt-2">  {{ 'PayRoll.payRollPersons' | translate }}</h5>
+      <!-- <fa-icon *ngIf="!viewRequest" class="ico text-primary fa-2x" [icon]="addIcon" (click)="addVisa()"></fa-icon> -->
+    </div>
+    <div class="table-responsive mt-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"> {{ 'PayRoll.source' | translate }}  </th>
+            <th scope="col">{{ 'PayRoll.earningAmount' | translate }}</th>
+            <th scope="col">{{ 'PayRoll.deductionAmount' | translate }}</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hrPersonData2 of list2; let i = index">
+            <th>{{hrPersonData2.sourceName}}</th>
+            <th>{{hrPersonData2.earningAmount}}</th>
+            <th>{{hrPersonData2.deductionAmount}}</th>
+
+            
+            
+          </tr>
+         
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>  {{ 'PayRoll.total' | translate }} :   </th>
+         <th>{{total}}</th>
+         <th></th>
+        </tr>
+        <tr>
+          <th> {{ 'PayRoll.netValue' | translate }}:   </th>
+       <th>{{netValue}}</th>
+       <th></th>
+      </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  
+  
+  <mat-dialog-actions class="justify-content-end">
+  
+    <button mat-raised-button color="primary" (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate
+}}</button>
+    <!-- <button mat-raised-button color="primary" (click)="save()">{{ 'ModalMsgs.save' | translate }}</button> -->
+  </mat-dialog-actions>

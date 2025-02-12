@@ -1,0 +1,21 @@
+export class EditUserRelativesDto{
+    portalUserId:number;
+    name:string;
+    notes:string;
+    employer:string;
+    genderLkpId:number;
+    relativesTypeLkpId:number;
+    nationalityLkpId:number;
+    qualificationLkpId:number;
+    educationalStageLkpId:number;
+    maritalStatusLkpId:number;
+    idNumber:string;
+    genderLkp:string;
+    relativesTypeLkp:string;
+    nationalityLkp:string;
+    qualificationLkp:string;
+    educationalStageLkp:string;
+    maritalStatusLkp:string;
+    rowStatus:string;
+    id:number;
+}

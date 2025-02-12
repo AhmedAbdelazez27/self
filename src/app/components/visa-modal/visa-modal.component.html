@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h5 class="card-title">{{ 'Profile.VisaDetails' | translate}}</h5>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-6">  
+        <div class="form-group">
+            <label for="visaTypeLkpId" [class.label-over]=" VisaEditObj.visaTypeLkpId">{{ 'Profile.VisaType' | translate}}</label>
+            <select id="visaTypeLkpId" class="form-control"  [(ngModel)]=" VisaEditObj.visaTypeLkpId">
+                <!-- <mat-option>
+                    <ngx-mat-select-search [formControl]="visatypeFilterCtrl" placeholderLabel="Search" noEntriesFoundLabel="No matching results found"></ngx-mat-select-search>
+                  </mat-option> -->
+                <option *ngFor="let visaType of dataVisaList" [value]="visaType.id">{{ visaType.text }}</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="visaNumber" [class.label-over]=" VisaEditObj.visaNumber">{{ 'Profile.VisaNumber' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="visaNumber" [(ngModel)]=" VisaEditObj.visaNumber">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">  
+        <div class="form-group">
+            <label for="placeOfIssueLkpId" [class.label-over]="VisaEditObj.placeOfIssueLkpId">{{ 'Profile.PlaceOfIssue' | translate}}</label>
+            <select id="placeOfIssueLkpId" class="form-control" [(ngModel)]="VisaEditObj.placeOfIssueLkpId">
+                <!-- <mat-option>
+                    <ngx-mat-select-search [formControl]="placeOfIssueFilterCtrl" placeholderLabel="Search" noEntriesFoundLabel="No matching results found"></ngx-mat-select-search>
+                  </mat-option> -->
+                <option *ngFor="let placeOfIssue of placeOfIssueList " [value]="placeOfIssue.id">{{ placeOfIssue.text }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4">
+        <div class="form-group">
+            <label (click)="picker55.open()" for="dateOfIssue" [class.label-over]="VisaEditObj.dateOfIssue">{{ 'Profile.DateOfIssue' | translate}}</label>
+            <input class="form-control" (focus)="focused($event)" (blur)="blured($event,VisaEditObj.dateOfIssue)"  (click)="picker55.open();" [(ngModel)]="VisaEditObj.dateOfIssue" [matDatepicker]="picker55" id="dateOfIssue" autocomplete="off">
+            <mat-datepicker #picker55></mat-datepicker>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-4">
+        <div class="form-group">
+            <label (click)="picker56.open()" for="dateOfExpiry" [class.label-over]="VisaEditObj.dateOfExpiry">{{ 'Profile.DateOfExpiry' | translate}}</label>
+            <input class="form-control" (focus)="focused($event)" (blur)="blured($event,VisaEditObj.dateOfExpiry)" (click)="picker56.open();" [(ngModel)]="VisaEditObj.dateOfExpiry" [matDatepicker]="picker56" id="dateOfExpiry" autocomplete="off">
+            <mat-datepicker #picker56></mat-datepicker>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="visaCost" [class.label-over]="VisaEditObj.visaCost">{{ 'Profile.VisaCost' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="visaCost" mask="separator" thousandSeparator="," [(ngModel)]="VisaEditObj.visaCost">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">  
+        <div class="form-group">
+            <label for="issuedByLkpId" [class.label-over]="VisaEditObj.issuedByLkpId">{{ 'Profile.IssuedBy' | translate}}</label>
+            <select class="form-control" [(ngModel)]="VisaEditObj.issuedByLkpId" id="issuedByLkpId">
+              <!-- <mat-option>
+                <ngx-mat-select-search [formControl]="issueFilterCtrl" placeholderLabel="Search" noEntriesFoundLabel="No matching results found"></ngx-mat-select-search>
+              </mat-option> -->
+              <option *ngFor="let issuedBy of issuedByList " [value]="issuedBy.id">
+                {{ issuedBy.text }}
+              </option>
+            </select>
+          </div>
+                 
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+            <label for="notes" [class.label-over]=" VisaEditObj.notes">{{ 'Profile.Notes' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="notes" [(ngModel)]="VisaEditObj.notes">
+        </div>
+    </div>
+</div>
+<mat-dialog-actions class="justify-content-end">
+    <button mat-button  (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate }}</button>
+    <button mat-raised-button color="primary" (click)="save()">{{ 'ModalMsgs.save' | translate }}</button>
+</mat-dialog-actions>

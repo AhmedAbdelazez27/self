@@ -1,0 +1,123 @@
+<div class="justify-content-between align-items-center">
+    <h5 class="card-title m-0">{{'HrDocumentRequest.Title' | translate}}</h5>
+</div>
+<div class="row row-regular">
+   
+    <div class="col-xl-4 col-lg-4">
+        <div class="form-group">
+            <label for="StatusLkpId">{{ 'HrDocumentRequest.StatusLkpId' | translate }}</label>
+            <input type="text" class="form-control" autocomplete="off" id="StatusLkpId"
+                [(ngModel)]="DocumentEditObj.fndStatusLkp" [disabled]="true">
+                <input type="hidden" class="form-control" autocomplete="off" id="documentRequestNumber"
+                [(ngModel)]="DocumentEditObj.documentRequestNumber" [disabled]="true">
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-4">
+        <div class="form-group">
+            <label (click)="picker2.open()" for="requestDate" [class.label-over]="DocumentEditObj.requestDate">{{
+                'HrDocumentRequest.requestDate' | translate }}</label>
+            <input class="form-control" (click)="picker2.open();" [(ngModel)]="DocumentEditObj.requestDate"
+                [matDatepicker]="picker2" id="requestDate" autocomplete="off">
+            <mat-datepicker #picker2></mat-datepicker>
+        </div>
+    </div>
+    <!-- </div>
+<div class="row"> -->
+    
+    <div class="col-lg-4 col-md-4">
+        <div class="form-group">
+            <label for="hrPersonId">{{'HrDocumentRequest.HrPersonId' | translate }}</label>
+            <select id="hrPersonId" class="form-control" [(ngModel)]="DocumentEditObj.hrPersonId" [disabled]="true">
+                <option *ngFor="let hrPerson of hrPersonList" [value]="hrPerson.id">{{hrPerson.text}}
+                </option>
+            </select>
+            <!-- <input type="text" class="form-control" autocomplete="off" id="HrPersonId" [(ngModel)]="PersonEditObj.hrPersons"
+            [disabled]="disabled"> -->
+        </div>
+    </div>
+    
+
+    <div class="col-lg-4 col-md-4">
+        <div class="form-group">
+            <label for="subject" [class.label-over]="DocumentEditObj.subject">{{'HrDocumentRequest.subject' |
+                translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="subject"
+                [(ngModel)]="DocumentEditObj.subject">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4">
+        <div class="form-group">
+            <label for="submittedTo" [class.label-over]="DocumentEditObj.submittedTo">{{'HrDocumentRequest.SubmittedTo'
+                | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="submittedTo"
+                [(ngModel)]="DocumentEditObj.submittedTo">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4">
+        <div class="form-group">
+            <label for="documentLkpId">{{'HrDocumentRequest.DocumentType' | translate}}</label>
+            <select id="documentLkpId" class="form-control"  [(ngModel)]="DocumentEditObj.documentLkpId">
+                <!-- <mat-option>
+                    <ngx-mat-select-search [formControl]="documentFilterCtrl" placeholderLabel="Search" noEntriesFoundLabel="No matching results found"></ngx-mat-select-search>
+                  </mat-option> -->
+                <option *ngFor="let hrdocu of  documentlist" [value]="hrdocu.id">{{hrdocu.text}}</option>
+            </select>
+        </div>
+    </div>
+    <!-- <div class="col-lg-4 col-md-4">
+        <div class="form-group">
+            <label for="documentLkpId" [class.label-over]="DocumentEditObj.documentLkp">{{'HrDocumentRequest.DocumentType' | translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="documentLkp"
+                [(ngModel)]="DocumentEditObj.documentLkp" [disabled]="true">
+        </div>
+    </div> -->
+</div>
+<div class="row">
+
+    <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+            <label for="comments" [class.label-over]="DocumentEditObj.comments">{{'HrDocumentRequest.comments' |
+                translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="comments"
+                [(ngModel)]="DocumentEditObj.comments">
+        </div>
+    </div>
+ 
+    <!-- <div class="col-lg-4 col-md-4">
+        <div class="form-group">
+            <label for="reason" [class.label-over]="DocumentEditObj.reason">{{'HrDocumentRequest.reason' |
+                translate}}</label>
+            <input type="text" class="form-control" autocomplete="off" id="reason" [(ngModel)]="DocumentEditObj.reason">
+        </div>
+    </div> -->
+    <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+            <label for="desc" [class.label-over]="DocumentEditObj.desc">{{'HrDocumentRequest.Description' |
+                translate}}</label>
+            <textarea type="text" class="form-control" autocomplete="off" id="desc"
+                [(ngModel)]="DocumentEditObj.desc"></textarea>
+        </div>
+    </div>
+   
+    <!-- <div class="col-lg-4 col-xl-4"> 
+            <div class="col-sm-6">
+                
+                    
+                <div class="custom-file">
+                    <label for="relname" >{{ 'Profile.File' | translate }}</label>
+                    <input type="file" class="bi bi-upload" [class.is-invalid]="DocumentEditObj.filePath" (change)="onFileChange($event,DocumentEditObj.id)" [(ngModel)]="DocumentEditObj.filePath" id="customFile{{ DocumentEditObj.id }}">
+                    
+                </div>
+            </div>
+             
+        
+      </div> -->
+
+
+
+</div>
+
+<mat-dialog-actions class="justify-content-end align-items-center">
+    <button mat-button (click)="cancel()" tabindex="-1">{{ 'ModalMsgs.cancel' | translate }}</button>
+    <button mat-raised-button color="primary" (click)="save()">{{ 'ModalMsgs.save' | translate }}</button>
+</mat-dialog-actions>

@@ -1,0 +1,1418 @@
+<div class="profile-wrapper">
+    <!-- Loading Overlay -->
+    <app-insideloader *ngIf="loadingOverlay"></app-insideloader>
+    <!-- =============== -->
+    <div class="form" *ngIf="userData && !loadingOverlay">
+        <div class="card">
+            <div class="card-body">
+
+                <h5 class="card-title">{{ 'Profile.Profile' | translate }}</h5>
+                <mat-tab-group mat-stretch-tabs dynamicHeight>
+                    <mat-tab label="{{'Profile.PersonalInformation' | translate}}">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2">
+
+                                        <img class="img" src="{{userData.personPhoto}}" alt="img" />
+
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <h5 class="card-category text-gray" style="margin-top:5%">{{ userData.fullName
+                                            }}</h5>
+                                        <span class="job-title" style="color: gray;">{{ lang=='ar' ?
+                                            userData?.fndJobLkp?.nameAr : userData?.fndJobLkp?.nameEn }}</span>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{ 'SignUpForm.birthDate' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.birthDate }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{ 'Profile.Gender' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData?.fndGenderLkp?.nameEn
+                                                    }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{ 'Profile.Marital' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{
+                                                    userData?.fndMaritalStatusLkp?.nameEn}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{ 'Profile.Nationality' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData?.fndNationalityLkp?.nameEn
+                                                    }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label> {{ 'Profile.EmailAddress' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display"><i class="fa fa-envelope"
+                                                        style="padding:5px"></i>{{ userData.emailAddress }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label> {{ 'Profile.Mobile' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display"><i class="fa fa-phone"
+                                                        style="padding:5px"></i>{{ userData.phoneNumber }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab label="{{ 'Home.EmployeeDetails' | translate }} ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+
+                                        <img class="img" src="{{userData.personPhoto}}" alt="img" />
+
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <h5 class="card-category text-gray" style="margin-top:5%">{{ userData.fullName
+                                            }}</h5>
+                                        <span class="job-title" style="color: gray;">{{ lang=='ar' ?
+                                            userData?.fndJobLkp?.nameAr : userData?.fndJobLkp?.nameEn }}</span>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label> {{ 'Profile.EmployeeNumber' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.employeeNumber }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label> {{ 'Profile.HireDate' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.hireDate }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{ 'Profile.Supervisor' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.hrPersonSupervisor?.fullName
+                                                    }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{ 'Profile.Job' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ lang=='ar' ?
+                                                    userData?.fndJobLkp?.nameAr : userData?.fndJobLkp?.nameEn }}</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <!-- <div class="col-md-3">
+                                                <label>{{ 'Profile.Type' | translate }} Employee Type</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData?.fndPersonTypeLkp?.nameEn     }}</label>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{ 'Profile.PersonCategory' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.fndPersonCategoryLkp?.nameEn
+                                                    }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{ 'Profile.SponsorName' | translate }} </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.fndSponserLkp?.nameEn
+                                                    }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab label="{{ 'Profile.ProbationWaitingPeriodDetails' | translate }}  ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+
+                                        <img class="img" src="{{userData.personPhoto}}" alt="img" />
+
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <h5 class="card-category text-gray" style="margin-top:5%">{{ userData.fullName
+                                            }}</h5>
+                                        <span class="job-title" style="color: gray;">{{ lang=='ar' ?
+                                            userData?.fndJobLkp?.nameAr : userData?.fndJobLkp?.nameEn }}</span>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.Experimentperiod' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.probationLength }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.ProbationUnit' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.fndProbationUnitLkp?.nameEn
+                                                    }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.ProbationEndDate' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.probationEndDate }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.NoticeLength' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.noticeLength
+                                                    }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.NoticeUnit' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.fndNoticeUnitLkp?.nameEn
+                                                    }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{ 'Profile.TicketDetails' | translate }}">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+
+                                        <img class="img" src="{{userData.personPhoto}}" alt="img" />
+
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <h5 class="card-category text-gray" style="margin-top:5%">{{ userData.fullName
+                                            }}</h5>
+                                        <span class="job-title" style="color: gray;">{{ lang=='ar' ?
+                                            userData?.fndJobLkp?.nameAr : userData?.fndJobLkp?.nameEn }}</span>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.NoOfTickets' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label>{{ userData.noOfTickets }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.TicketAfterYears' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label>{{ userData.ticketAfterYears }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.DestinationCountry' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label>{{ userData.fndDestinationCountryLkp?.nameEn }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.TicketClass' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label>{{ userData.fndTicketClassLkp?.nameEn }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label> {{'Profile.TicketAmount' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label>{{ userData.ticketAmount }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="{{'Profile.AccountDetails' | translate }} ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+
+                                        <img class="img" src="{{userData.personPhoto}}" alt="img" />
+
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <h5 class="card-category text-gray" style="margin-top:5%">{{ userData.fullName
+                                            }}</h5>
+                                        <span class="job-title" style="color: gray;">{{ lang=='ar' ?
+                                            userData?.fndJobLkp?.nameAr : userData?.fndJobLkp?.nameEn }}</span>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.PaymentType' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.fndPaymentTypeLkp?.nameEn
+                                                    }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.Bank' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.fndBankLkp?.nameEn }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.AccountNumber' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.accountNumber }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-bottom: 0.8%;">
+                                    </div>
+                                    <div class="col-md-10" style="margin-bottom: 0.8%;">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>{{'Profile.IBAN' | translate }}</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <label class="label-display">{{ userData.iban }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+
+                <br>
+
+                <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <mat-icon style=" 
+                            background-color: #0274BE !important;
+ color: #fff !important;
+ width: 63px !important;
+ height: 43px;
+ margin: auto;
+ padding: 10px;
+ font-size: 25px;
+ border-radius: 5px;
+ border: 1px;
+ margin-bottom: 1px;
+ text-align: center;" class="example-tab-icon">account_box</mat-icon>
+                            {{'Profile.VisaDetails' | translate }}
+                            <!-- {{ 'Profile.PersonalDetails' | translate }} -->
+                        </ng-template>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title"> {{'Profile.VisaDetails' | translate }}</h5>
+                                    <fa-icon class="ico text-primary fa-2x" [icon]="addIcon"
+                                        (click)="addVisa()"></fa-icon>
+                                </div>
+                                <div class="table-responsive mt-3">
+
+                                    <div class="example-header">
+                                        <div class="search-box d-flex" mat-button aria-label="Search">
+                                            <mat-icon class="filter-test">search</mat-icon>
+                                            <input matInput class="filter-input"
+                                                (keyup)="VisaFilter($event.target.value)" placeholder="Filter">
+                                        </div>
+                                    </div>
+
+                                    <div class="example-container mat-elevation-z8">
+
+                                        <mat-table class="responsive-md responsive-sm zebra sticky-header"
+                                            [dataSource]="Visadata" #Visasort="matSort" matSort
+                                            (matSortChange)="announceSortChange($event)">
+
+                                            <ng-container matColumnDef="visaTypeLkp">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Profile.VisaType'
+                                                    | translate }} </mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.visaTypeLkp}} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="visaNumber">
+                                                <mat-header-cell *matHeaderCellDef
+                                                    mat-sort-header>{{'Profile.VisaNumber' | translate
+                                                    }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.visaNumber}} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="placeOfIssueLkp">
+                                                <mat-header-cell *matHeaderCellDef
+                                                    mat-sort-header>{{'Profile.PlaceOfIssue' | translate
+                                                    }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row" class="NoOfDays">
+                                                    {{row.placeOfIssueLkp}}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="dateOfIssue">
+                                                <mat-header-cell *matHeaderCellDef
+                                                    mat-sort-header>{{'Profile.DateOfIssue' | translate
+                                                    }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.dateOfIssue}}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="dateOfExpiry">
+                                                <mat-header-cell *matHeaderCellDef
+                                                    mat-sort-header>{{'Profile.DateOfExpiry' | translate
+                                                    }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.dateOfExpiry}}
+                                                </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="visaCost">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.VisaCost'
+                                                    | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.visaCost}}
+                                                </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="issuedByLkp">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.IssuedBy'
+                                                    | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.issuedByLkp}}
+                                                </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="notes">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Notes' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.notes}}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Action">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Action' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">
+
+                                                    <div class="text-right">
+                                                        <fa-icon class="ico text-info" [icon]="editIcon"
+                                                            (click)="editVisa(row)"></fa-icon>
+                                                        <!-- <fa-icon class="ico text-danger ml-2" [icon]="deleteIcon"
+                                                            (click)="deleteVisa(row)"></fa-icon> -->
+                                                    </div>
+
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <mat-header-row *matHeaderRowDef="VisaColumns"></mat-header-row>
+                                            <mat-row *matRowDef="let row; columns: VisaColumns;">
+                                            </mat-row>
+                                        </mat-table>
+
+                                        <mat-paginator #Visa [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </mat-tab>
+
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon" style=" 
+                            background-color: #0274BE !important;
+ color: #fff !important;
+ width: 63px !important;
+ height: 43px;
+ margin: auto;
+ padding: 10px;
+ font-size: 25px;
+ border-radius: 5px;
+ border: 1px;
+ margin-bottom: 1px;
+ text-align: center;">insert_chart</mat-icon>
+
+                            {{'Profile.PassportDetails' | translate }}
+                            <!-- {{ 'Profile.Financial' | translate }} -->
+                        </ng-template>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title">{{'Profile.PassportDetails' | translate }}</h5>
+                                    <fa-icon class="ico text-primary fa-2x" [icon]="addIcon"
+                                        (click)="addPass()"></fa-icon>
+                                </div>
+                                <div class="table-responsive mt-3">
+
+                                    <div class="example-header">
+                                        <div class="search-box d-flex" mat-button aria-label="Search">
+                                            <mat-icon class="filter-test">search</mat-icon>
+                                            <input matInput class="filter-input"
+                                                (keyup)="PassportFilter($event.target.value)" placeholder="Filter">
+                                        </div>
+                                    </div>
+
+                                    <div class="example-container mat-elevation-z8">
+
+                                        <mat-table class="responsive-md responsive-sm zebra sticky-header"
+                                            [dataSource]="Passportdata" #Passportsort="matSort" matSort
+                                            (matSortChange)="announceSortChange($event)">
+
+                                            <ng-container matColumnDef="passportTypeLkp">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                    {{'Profile.PassportType' | translate }} </mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.passportTypeLkp}} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="passportNumber">
+                                                <mat-header-cell *matHeaderCellDef
+                                                    mat-sort-header>{{'Profile.PassportNumber' | translate
+                                                    }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.passportNumber}} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="countryOfIssueLkp">
+                                                <mat-header-cell *matHeaderCellDef
+                                                    mat-sort-header>{{'Profile.CountryOfIssue' | translate
+                                                    }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row" class="NoOfDays">
+                                                    {{row.countryOfIssueLkp}}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="placeOfIssue">
+                                                <mat-header-cell *matHeaderCellDef
+                                                    mat-sort-header>{{'Profile.PlaceOfIssue' | translate
+                                                    }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.placeOfIssue}}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="dateOfIssue">
+                                                <mat-header-cell *matHeaderCellDef
+                                                    mat-sort-header>{{'Profile.DateOfIssue' | translate
+                                                    }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.dateOfIssue}}
+                                                </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="dateOfExpiry">
+                                                <mat-header-cell *matHeaderCellDef
+                                                    mat-sort-header>{{'Profile.DateOfExpiry' | translate
+                                                    }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.dateOfExpiry}}
+                                                </mat-cell>
+                                            </ng-container>
+
+
+
+                                            <ng-container matColumnDef="notes">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Notes' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{row.notes}}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Action">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Action' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">
+
+                                                    <div class="text-right">
+                                                        <fa-icon class="ico text-info" [icon]="editIcon"
+                                                            (click)="editPass(row)"></fa-icon>
+                                                        <!-- <fa-icon class="ico text-danger ml-2" [icon]="deleteIcon"
+                                                            (click)="deletePass(row)"></fa-icon> -->
+                                                    </div>
+
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <mat-header-row *matHeaderRowDef="PassportColumns"></mat-header-row>
+                                            <mat-row *matRowDef="let row; columns: PassportColumns;">
+                                            </mat-row>
+                                        </mat-table>
+
+                                        <mat-paginator #Passport [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon" style=" 
+                            background-color: #0274BE !important;
+ color: #fff !important;
+ width: 63px !important;
+ height: 43px;
+ margin: auto;
+ padding: 10px;
+ font-size: 25px;
+ border-radius: 5px;
+ border: 1px;
+ margin-bottom: 1px;
+ text-align: center;">people</mat-icon>
+
+
+                            {{ 'Profile.IdentityCardDetails' | translate }}
+                        </ng-template>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title">{{ 'Profile.IdentityCardDetails' | translate }}</h5>
+                                    <fa-icon class="ico text-primary fa-2x" [icon]="addIcon"
+                                        (click)="addIdentity()"></fa-icon>
+                                </div>
+                                <div class="table-responsive mt-3">
+
+                                    <div class="example-header">
+                                        <div class="search-box d-flex" mat-button aria-label="Search">
+                                            <mat-icon class="filter-test">search</mat-icon>
+                                            <input matInput class="filter-input"
+                                                (keyup)="IdentityFilter($event.target.value)" placeholder="Filter">
+                                        </div>
+                                    </div>
+
+                                    <div class="example-container mat-elevation-z8">
+
+                                        <mat-table class="responsive-md responsive-sm zebra sticky-header"
+                                            [dataSource]="Identitydata" #Identitysort="matSort" matSort
+                                            (matSortChange)="announceSortChange($event)">
+
+                                            <ng-container matColumnDef="idNumber">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Profile.IdNumber'
+                                                    | translate }} </mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.idNumber }} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="dateOfExpiry">
+                                                <mat-header-cell *matHeaderCellDef
+                                                    mat-sort-header>{{'Profile.DateOfIssue' | translate
+                                                    }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.dateOfExpiry }} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="cardNo">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.CardNo' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row" class="NoOfDays"> {{ row.cardNo }}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="notes">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Notes' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">{{ row.notes }}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Action">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Action' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">
+
+                                                    <div class="text-right">
+                                                        <fa-icon class="ico text-info" [icon]="editIcon"
+                                                            (click)="editIdentity(row)"></fa-icon>
+                                                        <!-- <fa-icon class="ico text-danger ml-2" [icon]="deleteIcon"
+                                                            (click)="deleteIdentity(row)"></fa-icon> -->
+                                                    </div>
+
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <mat-header-row *matHeaderRowDef="IdentityColumns"></mat-header-row>
+                                            <mat-row *matRowDef="let row; columns: IdentityColumns;">
+                                            </mat-row>
+                                        </mat-table>
+
+                                        <mat-paginator #Identity [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon" style=" 
+                        background-color: #0274BE !important;
+color: #fff !important;
+width: 63px !important;
+height: 43px;
+margin: auto;
+padding: 10px;
+font-size: 25px;
+border-radius: 5px;
+border: 1px;
+margin-bottom: 1px;
+text-align: center;">people</mat-icon>
+
+
+                            {{ 'Profile.AddressDetails' | translate }}
+                        </ng-template>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title">{{ 'Profile.AddressDetails' | translate }}</h5>
+                                    <fa-icon class="ico text-primary fa-2x" [icon]="addIcon"
+                                        (click)="addAddress()"></fa-icon>
+                                </div>
+                                <div class="table-responsive mt-3">
+
+                                    <div class="example-header">
+                                        <div class="search-box d-flex" mat-button aria-label="Search">
+                                            <mat-icon class="filter-test">search</mat-icon>
+                                            <input matInput class="filter-input"
+                                                (keyup)="AddressFilter($event.target.value)" placeholder="Filter">
+                                        </div>
+                                    </div>
+
+                                    <div class="example-container mat-elevation-z8">
+
+                                        <mat-table class="responsive-md responsive-sm zebra sticky-header"
+                                            [dataSource]="Addressdata" #Addresssort="matSort" matSort
+                                            (matSortChange)="announceSortChange($event)">
+
+                                            <ng-container matColumnDef="fndAddressTypeLkp">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                                    {{'Profile.AddressType' | translate }} </mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.fndAddressTypeLkp }} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="fndCountryLkp">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Country' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.fndCountryLkp }} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="fndCityLkp">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.City' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row" class="NoOfDays">{{ row.fndCityLkp }}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="addressDetails">
+                                                <mat-header-cell *matHeaderCellDef
+                                                    mat-sort-header>{{'Profile.AddressDetails' | translate
+                                                    }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.addressDetails }}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="telephone">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.TelePhone'
+                                                    | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.telephone }}
+                                                </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="mobile">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Mobile' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.mobile }}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Action">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Action' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">
+
+                                                    <div class="text-right">
+                                                        <fa-icon class="ico text-info" [icon]="editIcon"
+                                                            (click)="editAddress(row)"></fa-icon>
+                                                        <!-- <fa-icon class="ico text-danger ml-2" [icon]="deleteIcon"
+                                                            (click)="deleteAddress(row)"></fa-icon> -->
+                                                    </div>
+
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <mat-header-row *matHeaderRowDef="AddressColumns"></mat-header-row>
+                                            <mat-row *matRowDef="let row; columns: AddressColumns;">
+                                            </mat-row>
+                                        </mat-table>
+
+                                        <mat-paginator #Address [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                                    </div>
+
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </mat-tab>
+
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon" style=" 
+                            background-color: #0274BE !important;
+ color: #fff !important;
+ width: 63px !important;
+ height: 43px;
+ margin: auto;
+ padding: 10px;
+ font-size: 25px;
+ border-radius: 5px;
+ border: 1px;
+ margin-bottom: 1px;
+ text-align: center;">people</mat-icon>
+
+                            {{ 'Profile.SalaryElements' | translate }}
+                        </ng-template>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title">{{ 'Profile.SalaryElements' | translate }}</h5>
+                                    <!--<fa-icon *ngIf="!viewRequest" class="ico text-primary fa-2x" [icon]="addIcon" (click)="addVisa()"></fa-icon>-->
+                                </div>
+                                <div class="table-responsive mt-3">
+
+                                    <div class="example-header">
+                                        <div class="search-box d-flex" mat-button aria-label="Search">
+                                            <mat-icon class="filter-test">search</mat-icon>
+                                            <input matInput class="filter-input"
+                                                (keyup)="SalaryFilter($event.target.value)" placeholder="Filter">
+                                        </div>
+                                    </div>
+
+                                    <div class="example-container mat-elevation-z8">
+
+                                        <mat-table class="responsive-md responsive-sm zebra sticky-header"
+                                            [dataSource]="Salarydata" #Salarysort="matSort" matSort
+                                            (matSortChange)="announceSortChange($event)">
+
+                                            <ng-container matColumnDef="pyElementName">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header> {{
+                                                    'Profile.PyElement' | translate }} </mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.pyElementName }} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="amount">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'Profile.Amount' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.amount }} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="startPeriodNameAr">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+                                                    'Profile.StartPeriod' | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row" class="NoOfDays"> {{
+                                                    row.startPeriodNameAr }}
+                                                </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="endPeriodNameAr">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+                                                    'Profile.EndPeriod' | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row" class="NoOfDays"> {{ row.endPeriodNameAr
+                                                    }}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="notes">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Notes' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">{{ row.notes }}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Action">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Action' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">
+
+                                                    <div *ngIf="!viewRequest" class="text-right">
+                                                        <!--<fa-icon class="ico text-info" [icon]="editIcon" (click)="editVisa(i)"></fa-icon>
+                                                    <fa-icon class="ico text-danger ml-2" [icon]="deleteIcon" (click)="deleteVisa(i)"></fa-icon>
+                                                    -->
+                                                    </div>
+
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <mat-header-row *matHeaderRowDef="SalaryColumns"></mat-header-row>
+                                            <mat-row *matRowDef="let row; columns: SalaryColumns;">
+                                            </mat-row>
+                                        </mat-table>
+
+                                        <mat-paginator #Salary [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </mat-tab>
+
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <mat-icon style=" 
+                            background-color: #0274BE !important;
+ color: #fff !important;
+ width: 63px !important;
+ height: 43px;
+ margin: auto;
+ padding: 10px;
+ font-size: 25px;
+ border-radius: 5px;
+ border: 1px;
+ margin-bottom: 1px;
+ text-align: center;" class="example-tab-icon">account_box</mat-icon>
+                            {{'Profile.HealthCardDetails' | translate }}
+                            <!-- {{ 'Profile.PersonalDetails' | translate }} -->
+                        </ng-template>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title"> {{'Profile.HealthCardDetails' | translate }}</h5>
+                                    <fa-icon class="ico text-primary fa-2x" [icon]="addIcon"
+                                        (click)="addHealth()"></fa-icon>
+                                </div>
+                                <div class="table-responsive mt-3">
+
+                                    <div class="example-header">
+                                        <div class="search-box d-flex" mat-button aria-label="Search">
+                                            <mat-icon class="filter-test">search</mat-icon>
+                                            <input matInput class="filter-input"
+                                                (keyup)="HealthCardFilter($event.target.value)" placeholder="Filter">
+                                        </div>
+                                    </div>
+
+                                    <div class="example-container mat-elevation-z8">
+
+                                        <mat-table class="responsive-md responsive-sm zebra sticky-header"
+                                            [dataSource]="HealthCarddata" #HealthCardsort="matSort" matSort
+                                            (matSortChange)="announceSortChange($event)">
+
+                                            <ng-container matColumnDef="healthCardType">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header> {{
+                                                    'Profile.HealthCardTypeLkp' | translate }} </mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.healthCardType }} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="healthCardNumber">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+                                                    'Profile.HealthCardNumber' | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.healthCardNumber }} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="issuedBy">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'Profile.IssuedBy'
+                                                    | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row" class="NoOfDays"> {{ row.issuedBy }}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="issueDate">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+                                                    'Profile.IssueDate' | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.issueDate }}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="expiryDate">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+                                                    'Profile.ExpiryDate' | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.expiryDate }}
+                                                </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="healthCardCost">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+                                                    'Profile.HealthCardCost' | translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">{{ row.healthCardCost }}
+                                                </mat-cell>
+                                            </ng-container>
+
+
+
+                                            <ng-container matColumnDef="comments">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{
+                                                    'Profile.Comments'| translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.comments }}
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Action">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Action' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">
+
+                                                    <div class="text-right">
+                                                        <fa-icon class="ico text-info" [icon]="editIcon"
+                                                            (click)="editHealth(row)"></fa-icon>
+                                                        <!-- <fa-icon class="ico text-danger ml-2" [icon]="deleteIcon"
+                                                            (click)="deleteHealth(row)"></fa-icon> -->
+                                                    </div>
+
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <mat-header-row *matHeaderRowDef="HealthCardColumns"></mat-header-row>
+                                            <mat-row *matRowDef="let row; columns: HealthCardColumns;">
+                                            </mat-row>
+                                        </mat-table>
+
+                                        <mat-paginator #HealthCard [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                                    </div>
+
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </mat-tab>
+
+
+
+                    <mat-tab style="display: grid;">
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon" style=" 
+                            background-color: #0274BE !important;
+ color: #fff !important;
+ width: 63px !important;
+ height: 43px;
+ margin: auto;
+ padding: 10px;
+ font-size: 25px;
+ border-radius: 5px;
+ border: 1px;
+ margin-bottom: 1px;
+ text-align: center;">insert_drive_file</mat-icon>
+
+                            {{ 'Profile.Attachments' | translate }}
+                        </ng-template>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title"> {{'Profile.Attachments' | translate }}</h5>
+                                    <fa-icon class="ico text-primary fa-2x" [icon]="addIcon"
+                                        (click)="addAttachment()"></fa-icon>
+                                </div>
+                                <div class="table-responsive mt-3">
+
+                                    <div class="example-header">
+                                        <div class="search-box d-flex" mat-button aria-label="Search">
+                                            <mat-icon class="filter-test">search</mat-icon>
+                                            <input matInput class="filter-input"
+                                                (keyup)="AttachmentsFilter($event.target.value)" placeholder="Filter">
+                                        </div>
+                                    </div>
+
+                                    <div class="example-container mat-elevation-z8">
+
+                                        <mat-table class="responsive-md responsive-sm zebra sticky-header"
+                                            [dataSource]="Attachmentsdata" #Attachmentssort="matSort" matSort
+                                            (matSortChange)="announceSortChange($event)">
+
+                                            <ng-container matColumnDef="attachmentName">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header> {{
+                                                    'Profile.JobAttachmentName' | translate}} </mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.attachmentName }} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="File">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'Profile.File' |
+                                                    translate}}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">
+
+                                                    <div>
+                                                        <a *ngIf="row.filePath" class="btn btn-primary"
+                                                            href="{{ row.filePath }}" target="_blank">
+                                                            <fa-icon [icon]="downloadIcon"></fa-icon>
+                                                        </a>
+                                                    </div>
+
+                                                </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="Pic">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'Profile.Pic' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row" class="NoOfDays">
+                                                    <div>
+                                                        <img *ngIf="getPic(row.filePath) == 1" class="ml-2"
+                                                            src="./assets/images/file.png" alt="img"
+                                                            style="width: 40px; height: auto; max-height: 80px; object-fit: contain;"
+                                                            (click)="openPreview(row.filePath, 'image')">
+                                                        <img *ngIf="getPic(row.filePath) == 2" class="ml-2"
+                                                            src="./assets/images/file.png" alt="img"
+                                                            style="width: 40px; height: auto; max-height: 80px; object-fit: contain;"
+                                                            (click)="openPreview(row.filePath, 'file')">
+                                                    </div>
+                                                </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="Action">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Action' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">
+
+                                                    <div class="text-right">
+                                                        <!-- <fa-icon class="ico text-info" [icon]="editIcon"
+                                                                (click)="editAttachment(i)"></fa-icon> -->
+                                                        <!-- <fa-icon class="ico text-danger ml-2" [icon]="deleteIcon"
+                                                            (click)="deleteAttachment(row)"></fa-icon> -->
+                                                    </div>
+
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <mat-header-row *matHeaderRowDef="AttachmentsColumns"></mat-header-row>
+                                            <mat-row *matRowDef="let row; columns: AttachmentsColumns;">
+                                            </mat-row>
+                                        </mat-table>
+
+                                        <mat-paginator #Attachments
+                                            [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <mat-icon class="example-tab-icon" style=" 
+                            background-color: #0274BE !important;
+ color: #fff !important;
+ width: 63px !important;
+ height: 43px;
+ margin: auto;
+ padding: 10px;
+ font-size: 25px;
+ border-radius: 5px;
+ border: 1px;
+ margin-bottom: 1px;
+ text-align: center;">people</mat-icon>
+
+                            {{ 'Profile.JobDescription' | translate }}
+                        </ng-template>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title">{{ 'Profile.JobDescription' | translate }}</h5>
+                                    <fa-icon class="ico text-primary fa-2x" [icon]="addIcon"
+                                        (click)="addJobAttachment()"></fa-icon>
+                                </div>
+                                <div class="table-responsive mt-3">
+
+                                    <div class="example-header">
+                                        <div class="search-box d-flex" mat-button aria-label="Search">
+                                            <mat-icon class="filter-test">search</mat-icon>
+                                            <input matInput class="filter-input"
+                                                (keyup)="JobDescriptionFilter($event.target.value)"
+                                                placeholder="Filter">
+                                        </div>
+                                    </div>
+
+                                    <div class="example-container mat-elevation-z8">
+
+                                        <mat-table class="responsive-md responsive-sm zebra sticky-header"
+                                            [dataSource]="JobDescriptiondata" #JobDescriptionsort="matSort" matSort
+                                            (matSortChange)="announceSortChange($event)">
+
+                                            <ng-container matColumnDef="jobAttachmentName">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header> {{
+                                                    'Profile.AttachmentName' | translate }} </mat-header-cell>
+                                                <mat-cell *matCellDef="let row"> {{ row.jobAttachmentName }} </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="File">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'Profile.File' |
+                                                    translate}}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">
+
+                                                    <div>
+                                                        <a *ngIf="row.filePath" class="btn btn-primary"
+                                                            href="{{ row.filePath }}" target="_blank">
+                                                            <fa-icon [icon]="downloadIcon"></fa-icon>
+                                                        </a>
+                                                    </div>
+
+                                                </mat-cell>
+                                            </ng-container>
+
+
+                                            <ng-container matColumnDef="Pic">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'Profile.Pic' |
+                                                    translate}}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row" class="NoOfDays">
+                                                    <div>
+                                                        <img *ngIf="getPic(row.filePath) == 1" class="att-img ml-2"
+                                                            src="{{ row.filePath }}" alt="img" width="80px"
+                                                            height="80px" (click)="openPreview(row.filePath, 'image')">
+                                                        <img *ngIf="getPic(row.filePath) == 2" class="att-img ml-2"
+                                                            src="./assets/images/file.png" alt="img" width="80px"
+                                                            height="80px" (click)="openPreview(row.filePath, 'file')">
+                                                    </div>
+                                                </mat-cell>
+
+                                            </ng-container>
+
+                                            <ng-container matColumnDef="Action">
+                                                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Action' |
+                                                    translate }}</mat-header-cell>
+                                                <mat-cell *matCellDef="let row">
+
+                                                    <div>
+                                                        <!-- <fa-icon class="ico text-info" [icon]="editIcon"
+                                                                (click)="editAttachment(i)"></fa-icon> -->
+                                                        <!-- <fa-icon class="ico text-danger ml-2" [icon]="deleteIcon"
+                                                            (click)="deleteJobAttachment(row)"></fa-icon> -->
+                                                    </div>
+
+                                                </mat-cell>
+                                            </ng-container>
+
+                                            <mat-header-row *matHeaderRowDef="JobDescriptionColumns"></mat-header-row>
+                                            <mat-row *matRowDef="let row; columns: JobDescriptionColumns;">
+                                            </mat-row>
+                                        </mat-table>
+
+                                        <mat-paginator #JobDescription
+                                            [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </mat-tab>
+
+
+
+                </mat-tab-group>
+
+            </div>
+        </div>
+
+
+
+
+        <button class="btn btn-submit" type="button" (click)="sumbitForm()">{{ 'Profile.Save' | translate }}</button>
+    </div>
+</div>
