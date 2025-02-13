@@ -432,7 +432,7 @@ export class HrVacationsTypesComponent implements OnInit {
     let matDialog = new MatDialogConfig();
     matDialog.disableClose = true;
 
-    matDialog.width = '70vw'; 
+    matDialog.width = '85vw'; 
     matDialog.panelClass = 'custom-mat-dialog';
     matDialog.data={
       PersonEditObjIndex: this.PersonEditObjIndex,

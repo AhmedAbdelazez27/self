@@ -1,157 +1,96 @@
 <div>
-    <h2>{{'HrDocumentRequest.Title' | translate}}</h2>
+    <h2>{{'HrDocumentRequest.Title' | translate}} </h2>
+    <!-- testt111 -->
 </div>
 
 <hr>
-<div class="container" style="padding-left: 0px;">
-    <div class="col-md-12" style="padding-left: 0px;">
-        <div class="mt-4" style="display: flex;">
-            <div style="flex:1">
-                <h5>{{'Profile.Name' | translate}}</h5>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="padding-left: 8px;">
+            <div class="mt-4 row" >
+                <div class="col-md-3">
+                    <h5>{{'Profile.Name' | translate}}</h5>
+                </div>
+                <div class="col-md-9 ">
+                    <span class="subheader">{{DocumentEditObj.hrPersons}}</span>
+                </div>
             </div>
-            <div style="flex:3">
-                <h5>{{DocumentEditObj.hrPersons}}</h5>
+    
+            <div class="mt-4 row" >
+                <div class="col-md-3">
+                    <span class="subheader">{{'Profile.Status'| translate}}</span>
+                </div>
+                <div class="col-md-9 ">
+                    <h5 *ngIf="DocumentEditObj.portalStatusLkpId==41718"
+                        style="color: green;width: 175px;">{{DocumentEditObj.PortalStatusLkp}}</h5>
+                    <h5 *ngIf="DocumentEditObj.portalStatusLkpId!=41718"
+                        style="color: red;width: 175px;">{{DocumentEditObj.PortalStatusLkp}}</h5>
+                </div>
             </div>
+    
+            <div class="mt-4 row" >
+                <div class="col-md-3">
+                    <h5>{{'Profile.TypeOfDocument' | translate}}</h5>
+                </div>
+                <div class="col-md-9 ">
+                    <span class="subheader">{{DocumentEditObj.documentLkp}}</span>
+                </div>
+            </div>
+    
+            <div class="mt-4 row" >
+                <div class="col-md-3">
+                    <h5>{{'HrDocumentRequest.SubmittedTo' | translate}}</h5>
+                </div>
+                <div class="col-md-9 ">
+                    <span class="subheader">{{DocumentEditObj.submittedTo}}</span>
+                </div>
+            </div>
+    
+            <!-- <div class="mt-4" style="display: flex;">
+                    <div style="flex:1">
+                        <h5>{{'HrDocumentRequest.Description' | translate}}</h5>
+                    </div>
+                    <div style="flex:3">
+                        <h5>{{DocumentEditObj.desc}}</h5>
+                    </div> 
+                </div>
+    
+                <div class="mt-4" style="display: flex;">
+    
+                    <div style="flex:1">
+                        <h5>{{'HrDocumentRequest.Reason' | translate}}</h5>
+                    </div>
+                    <div style="flex:3">
+                        <h5>{{DocumentEditObj.reason}}</h5>
+                    </div>
+                </div> -->
+    
         </div>
-
-        <div class="mt-4" style="display: flex;">
-            <div style="flex:1">
-                <h5>{{'Profile.Status'| translate}}</h5>
-            </div>
-            <div style="flex:3">
-                <h5 *ngIf="DocumentEditObj.portalStatusLkpId==41718"
-                    style="color: green;width: 175px;">{{DocumentEditObj.PortalStatusLkp}}</h5>
-                <h5 *ngIf="DocumentEditObj.portalStatusLkpId!=41718"
-                    style="color: red;width: 175px;">{{DocumentEditObj.PortalStatusLkp}}</h5>
-            </div>
-        </div>
-
-        <div class="mt-4" style="display: flex;">
-            <div style="flex:1">
-                <h5>{{'Profile.TypeOfDocument' | translate}}</h5>
-            </div>
-            <div style="flex:3">
-                <h5>{{DocumentEditObj.documentLkp}}</h5>
-            </div>
-        </div>
-
-        <div class="mt-4" style="display: flex;">
-            <div style="flex:1">
-                <h5>{{'HrDocumentRequest.SubmittedTo' | translate}}</h5>
-            </div>
-            <div style="flex:3">
-                <h5>{{DocumentEditObj.submittedTo}}</h5>
-            </div>
-        </div>
-
-        <!-- <div class="mt-4" style="display: flex;">
-                <div style="flex:1">
+        <div class="col-md-12 mt-4" style="padding-left: 8px;">
+            <div class="row">
+                <div class="col-md-3">
                     <h5>{{'HrDocumentRequest.Description' | translate}}</h5>
                 </div>
-                <div style="flex:3">
-                    <h5>{{DocumentEditObj.desc}}</h5>
-                </div> 
+                <div class="col-md-9">
+                    <textarea name="" id="" disabled style="width: 100%;" rows="0" [value]="DocumentEditObj.desc"></textarea>
+                </div>
             </div>
-
-            <div class="mt-4" style="display: flex;">
-
-                <div style="flex:1">
+        </div>
+        <div class="col-md-12 mt-4" style="padding-left: 8px;">
+            <div class="row">
+                <div class="col-md-3">
                     <h5>{{'HrDocumentRequest.Reason' | translate}}</h5>
                 </div>
-                <div style="flex:3">
-                    <h5>{{DocumentEditObj.reason}}</h5>
+                <div class="col-md-9">
+                   <input type="textArea" class="form-control" autocomplete="off" id="reason" [(ngModel)]="DocumentEditObj.reason">
                 </div>
-            </div> -->
-
-    </div>
-</div>
-<!-- New HR Document Request Table -->
-<!-- <div class="col-md-12 mt-4" style="padding-left: 8px;">
-    <div class="row">
-        <div class="col-md-3" style="padding-left: 8px;">
-            <h5>Approvers</h5>
-        </div>
-        <div class="col-md-9">
-            <div class="table-responsive table">
-                <table class="table">
-                    <tbody>
-                        <tr style="border: 1px solid #dee2e6;">
-                            <td>
-                                <h5 style="color: gray;">Name</h5>
-                            </td>
-                            <td>
-                                <h5 style="color: gray;">Status</h5>
-                            </td>
-                            <td>
-                                <h5 style="color: gray;">Date</h5>
-                            </td>
-                        </tr>
-                        <tr style="border: 1px solid #dee2e6;">
-                            <td style="width:50%">
-                                <h5><span>{{DocumentEditObj.supervisorname}}</span></h5>
-                            </td>
-                            <td style="width:30%">
-                                <h5>
-                                    <span *ngIf="DocumentEditObj.portalStatusLkpId==41717"
-                                        style="color: #666600; background-color: #faca1c; padding: 2px 5px; border-radius: 3px;">Pending</span>
-                                    <span
-                                        *ngIf="DocumentEditObj.portalStatusLkpId==41718 || DocumentEditObj.portalStatusLkpId==41721"
-                                        style="color: green;background-color: #d9ffdf;">Approved</span>
-                                    <span *ngIf="DocumentEditObj.portalStatusLkpId==41719"
-                                        style="color: red;background-color: #e93d37;">Rejected</span>
-                                </h5>
-                            </td>
-                            <td style="width:20%">
-                                <h5><span>{{DocumentEditObj.lastmodificationDate}}</span></h5>
-                            </td>
-                        </tr>
-                        <tr style="border: 1px solid #dee2e6;">
-                            <td style="width:50%">
-                                <h5><span>{{DocumentEditObj.supervisorname}}</span></h5>
-                            </td>
-                            <td style="width:30%">
-                                <h5>
-                                    <span *ngIf="DocumentEditObj.portalStatusLkpId==41717"
-                                    style="color: #666600; background-color: #ffff99; padding: 2px 5px; border-radius: 3px;">Pending</span>
-                              
-                                    <span *ngIf="DocumentEditObj.portalStatusLkpId==41718"
-                                        style="color: #666600; background-color: #ffff99; padding: 2px 5px; border-radius: 3px;">Pending</span>
-                                    <span *ngIf="DocumentEditObj.portalStatusLkpId==41721"
-                                        style="color: green;background-color: #d9ffdf;">Approved</span>
-                                </h5>
-                            </td>
-                            <td style="width:20%">
-                                <h5><span>{{DocumentEditObj.lastmodificationDate}}</span></h5>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
-</div> -->
-<div class="col-md-12 mt-4" style="padding-left: 8px;">
-    <div class="row">
-        <div class="col-md-3" style="padding-left: 8px;">
-            <h5>{{'HrDocumentRequest.Description' | translate}}</h5>
-        </div>
-        <div class="col-md-9">
-            <textarea name="" id="" disabled style="width: 100%;" rows="0" [value]="DocumentEditObj.desc"></textarea>
-        </div>
-    </div>
 </div>
-<div class="col-md-12 mt-4" style="padding-left: 8px;">
-    <div class="row">
-        <div class="col-md-3" style="padding-left: 8px;">
-            <h5>{{'HrDocumentRequest.Reason' | translate}}</h5>
-        </div>
-        <div class="col-md-9">
-           <input type="textArea" class="form-control" autocomplete="off" id="reason" [(ngModel)]="DocumentEditObj.reason">
-        </div>
-    </div>
-</div>
+
 <br>
-<button *ngIf="DocumentEditObj.portalStatusLkpId !==null && DocumentEditObj.portalStatusLkpId==41717" class="btn mr-2"  style="text-align: center; background-color: rgb(132, 208, 132); color: white;"  
+<!-- <button *ngIf="DocumentEditObj.portalStatusLkpId !==null && DocumentEditObj.portalStatusLkpId==41717" class="btn mr-2"  style="text-align: center; background-color: rgb(132, 208, 132); color: white;"  
 (click)="ApproveDocumentRequest(DocumentEditObj.id)">
 <span class="material-symbols-outlined">check_circle</span> Approve
 </button>
@@ -161,5 +100,88 @@
 </button>
 <button class="btn btn-secondary mr-2" style="text-align: center;" (click)="btnclose()">
     <span class="material-symbols-outlined">close</span> Close
-</button>
+</button> -->
+<div class="btn-container">
+    <button *ngIf="DocumentEditObj.portalStatusLkpId !== null && DocumentEditObj.portalStatusLkpId == 41717" 
+        class="btn btn-approve"  
+        (click)="ApproveDocumentRequest(DocumentEditObj.id)">
+        <span class="material-symbols-outlined">check_circle</span> Approve
+    </button>
+
+    <button *ngIf="DocumentEditObj.portalStatusLkpId !== null && DocumentEditObj.portalStatusLkpId == 41717" 
+        class="btn btn-reject"  
+        (click)="RejectDocumentRequest(DocumentEditObj.id)">
+        <span class="material-symbols-outlined">cancel</span> Reject
+    </button>
+
+    <button class="btn btn-secondary btn-close" (click)="btnclose()">
+        <span class="material-symbols-outlined">close</span> Close
+    </button>
+</div>
+
   
+    <!-- New HR Document Request Table -->
+    <!-- <div class="col-md-12 mt-4" style="padding-left: 8px;">
+        <div class="row">
+            <div class="col-md-3" style="padding-left: 8px;">
+                <h5>Approvers</h5>
+            </div>
+            <div class="col-md-9">
+                <div class="table-responsive table">
+                    <table class="table">
+                        <tbody>
+                            <tr style="border: 1px solid #dee2e6;">
+                                <td>
+                                    <h5 style="color: gray;">Name</h5>
+                                </td>
+                                <td>
+                                    <h5 style="color: gray;">Status</h5>
+                                </td>
+                                <td>
+                                    <h5 style="color: gray;">Date</h5>
+                                </td>
+                            </tr>
+                            <tr style="border: 1px solid #dee2e6;">
+                                <td style="width:50%">
+                                    <h5><span>{{DocumentEditObj.supervisorname}}</span></h5>
+                                </td>
+                                <td style="width:30%">
+                                    <h5>
+                                        <span *ngIf="DocumentEditObj.portalStatusLkpId==41717"
+                                            style="color: #666600; background-color: #faca1c; padding: 2px 5px; border-radius: 3px;">Pending</span>
+                                        <span
+                                            *ngIf="DocumentEditObj.portalStatusLkpId==41718 || DocumentEditObj.portalStatusLkpId==41721"
+                                            style="color: green;background-color: #d9ffdf;">Approved</span>
+                                        <span *ngIf="DocumentEditObj.portalStatusLkpId==41719"
+                                            style="color: red;background-color: #e93d37;">Rejected</span>
+                                    </h5>
+                                </td>
+                                <td style="width:20%">
+                                    <h5><span>{{DocumentEditObj.lastmodificationDate}}</span></h5>
+                                </td>
+                            </tr>
+                            <tr style="border: 1px solid #dee2e6;">
+                                <td style="width:50%">
+                                    <h5><span>{{DocumentEditObj.supervisorname}}</span></h5>
+                                </td>
+                                <td style="width:30%">
+                                    <h5>
+                                        <span *ngIf="DocumentEditObj.portalStatusLkpId==41717"
+                                        style="color: #666600; background-color: #ffff99; padding: 2px 5px; border-radius: 3px;">Pending</span>
+                                  
+                                        <span *ngIf="DocumentEditObj.portalStatusLkpId==41718"
+                                            style="color: #666600; background-color: #ffff99; padding: 2px 5px; border-radius: 3px;">Pending</span>
+                                        <span *ngIf="DocumentEditObj.portalStatusLkpId==41721"
+                                            style="color: green;background-color: #d9ffdf;">Approved</span>
+                                    </h5>
+                                </td>
+                                <td style="width:20%">
+                                    <h5><span>{{DocumentEditObj.lastmodificationDate}}</span></h5>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> -->

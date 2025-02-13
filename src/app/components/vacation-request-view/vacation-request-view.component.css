@@ -21,3 +21,59 @@
     vertical-align: middle;
     border: 1px solid #dee2e6;
 }
+.subheader{
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(160, 156, 158);
+}
+/* Default Button Container */
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adds spacing between buttons */
+    justify-content: center;
+}
+
+/* Button Styles */
+.btn {
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 5px;
+}
+
+/* Individual Button Colors */
+.btn-approve {
+    background-color: rgb(132, 208, 132);
+    color: white;
+}
+
+.btn-reject {
+    background-color: rgb(220, 53, 69);
+    color: white;
+}
+
+.btn-close {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Mobile Screens - Each Button in a Separate Row */
+@media (max-width: 768px) {
+    .btn-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .btn {
+        width: 90%; /* Ensures buttons take up full width on small screens */
+        text-align: center;
+    }
+}

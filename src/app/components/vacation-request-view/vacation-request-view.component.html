@@ -1,5 +1,6 @@
 <div>
-    <h2>{{ 'Profile.HrPersonVacations' | translate }}</h2>
+    <h2>{{ 'Profile.HrPersonVacations' | translate }}  </h2>
+    <!-- test2222 -->
 </div>
 
 <hr>
@@ -9,17 +10,17 @@
 
         <div class="col-md-12 mt-4" style="padding-left: 8px;">
             <div class="row">
-                <div class="col-md-3" style="padding-left: 8px;">
+                <div class="col-md-3" >
                     <h5>{{'Profile.Name' | translate}}</h5>
                 </div>
                 <div class="col-md-9">
-                    <h5>{{PersonEditObj.hrPersonName}}</h5>
+                    <span class="subheader">{{PersonEditObj.hrPersonName}}</span>
                 </div>
             </div>
         </div>
         <div class="col-md-12 mt-4" style="padding-left: 8px;">
             <div class="row">
-                <div class="col-md-3" style="padding-left: 8px;">
+                <div class="col-md-3" >
                     <h5>{{'Profile.Status'| translate}}</h5>
                 </div>
                 <div class="col-md-9">
@@ -33,42 +34,42 @@
         </div>
         <div class="col-md-12 mt-4" style="padding-left: 8px;">
             <div class="row">
-                <div class="col-md-3" style="padding-left: 8px;">
+                <div class="col-md-3">
                     <h5>{{'Profile.TypeOfLeave'| translate}}</h5>
                 </div>
                 <div class="col-md-9">
-                    <h5>{{'Profile.' + PersonEditObj.hrVacationsTypeName | translate}}</h5>
+                    <span class="subheader">{{'Profile.' + PersonEditObj.hrVacationsTypeName | translate}}</span>
                 </div>
             </div>
         </div>
         <div class="col-md-12 mt-4" style="padding-left: 8px;">
             <div class="row">
-                <div class="col-md-3" style="padding-left: 8px;">
+                <div class="col-md-3">
                     <h5>{{'Profile.StartEndDate'| translate}}</h5>
                     
                 </div>
                 <div class="col-md-9">
-                    <h5>{{PersonEditObj.startDate}} - {{PersonEditObj.endDate}}</h5>
+                    <span class="subheader">{{PersonEditObj.startDate}} - {{PersonEditObj.endDate}}</span>
                 </div>
             </div>
         </div>
         <div class="col-md-12 mt-4" style="padding-left: 8px;">
             <div class="row">
-                <div class="col-md-3" style="padding-left: 8px;">
+                <div class="col-md-3">
                     <h5>{{'Profile.NoOfDays'| translate}}</h5>
                 </div>
                 <div class="col-md-9">
-                    <h5>{{PersonEditObj.noOfDays}}</h5>
+                    <span class="subheader">{{PersonEditObj.noOfDays}}</span>
                 </div>
             </div>
         </div>
         <div class="col-md-12 mt-4" style="padding-left: 8px;">
             <div class="row">
-                <div class="col-md-3" style="padding-left: 8px;">
+                <div class="col-md-3">
                     <h5>{{'Profile.IsOutCountryLeave'| translate}}</h5>
                 </div>
                 <div class="col-md-9">
-                    <h5>{{PersonEditObj.isOutCountryLeave}}</h5>
+                    <span class="subheader">{{PersonEditObj.isOutCountryLeave}}</span>
                 </div>
             </div>
         </div>
@@ -131,7 +132,7 @@
         </div> -->
         <div class="col-md-12 mt-4" style="padding-left: 8px;">
             <div class="row">
-                <div class="col-md-3" style="padding-left: 8px;">
+                <div class="col-md-3">
                     <h5>{{'Profile.Description'| translate}}</h5>
                 </div>
                 <div class="col-md-9">
@@ -141,7 +142,7 @@
         </div>
         <div class="col-md-12 mt-4" style="padding-left: 8px;">
             <div class="row">
-                <div class="col-md-3" style="padding-left: 8px;">
+                <div class="col-md-3">
                     <h5>{{'Profile.Reason'| translate}}</h5>
                 </div>
                 <div class="col-md-9">
@@ -164,7 +165,7 @@
         </div>-->
     </div>
     <br>
-    <button *ngIf="PersonEditObj.portalStatusLkpId !==null && PersonEditObj.portalStatusLkpId==41712"  class="btn mr-2" style="text-align: center; background-color: rgb(132, 208, 132); color: white;"  
+    <!-- <button *ngIf="PersonEditObj.portalStatusLkpId !==null && PersonEditObj.portalStatusLkpId==41712"  class="btn mr-2" style="text-align: center; background-color: rgb(132, 208, 132); color: white;"  
     (click)="ApproveVacationRequest(PersonEditObj.id)">
         <span class="material-symbols-outlined">check_circle</span> Approve
     </button>
@@ -174,7 +175,25 @@
     </button>
     <button class="btn btn-secondary mr-2" style="text-align: center;" (click)="btnclose()">
         <span class="material-symbols-outlined">close</span> Close
-    </button> 
+    </button>  -->
+    <div class="btn-container">
+        <button *ngIf="PersonEditObj.portalStatusLkpId !== null && PersonEditObj.portalStatusLkpId == 41712" 
+            class="btn btn-approve"  
+            (click)="ApproveVacationRequest(PersonEditObj.id)">
+            <span class="material-symbols-outlined">check_circle</span> Approve
+        </button>
+    
+        <button *ngIf="PersonEditObj.portalStatusLkpId !== null && PersonEditObj.portalStatusLkpId == 41712" 
+            class="btn btn-reject"  
+            (click)="RejectPersonVacation(PersonEditObj.id)">
+            <span class="material-symbols-outlined">cancel</span> Reject
+        </button>
+    
+        <button class="btn btn-secondary btn-close" (click)="btnclose()">
+            <span class="material-symbols-outlined">close</span> Close
+        </button>
+    </div>
+    
 </div>
 
 <!--<div style="display: flex; margin-top: 75px;">

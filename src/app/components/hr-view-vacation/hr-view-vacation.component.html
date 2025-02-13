@@ -76,7 +76,7 @@
             <div class="col-md-3" style="padding-left: 8px;">
                 <h5>{{ 'Profile.Approvers' | translate }}  </h5>
             </div>
-            <div class="col-md-9">
+            <!-- <div class="col-md-9">
                 <div class="table-responsive table">
                     <table class="table">
                         <tbody>
@@ -125,7 +125,53 @@
                     </table>
                     
                 </div>
+            </div> -->
+            <div class="col-md-9">
+                <div class="table-responsive">
+                    <table class="table">
+                        <!-- Table Header (Only Visible on MD and Larger Screens) -->
+                        <thead class="d-none d-md-table-header">
+                            <tr style="border: 1px solid #dee2e6;">
+                                <th><h5 class="table-header-text">Name</h5></th>
+                                <th><h5 class="table-header-text">Status</h5></th>
+                                <th><h5 class="table-header-text">Date</h5></th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <!-- First Row -->
+                            <tr class="table-row">
+                                <td class="table-cell">
+                                    <div class="d-flex flex-column">
+                                        <span class="font-weight-bold">{{ PersonEditObj.supervisorname }}</span>
+                                        <span class="text-muted">{{ PersonEditObj.supervisorSubmitDate }}</span>
+                                    </div>
+                                </td>
+                                <td class="table-status">
+                                    <span *ngIf="PersonEditObj.portalStatusLkpId==41712" class="status-pending">{{ 'Profile.Pending' | translate }}</span>
+                                    <span *ngIf="PersonEditObj.portalStatusLkpId==41699 || PersonEditObj.portalStatusLkpId==41723" class="status-approved">{{ 'Profile.Approved' | translate }}</span>
+                                    <span *ngIf="PersonEditObj.portalStatusLkpId==41700" class="status-rejected">{{ 'Profile.Rejected' | translate }}</span>
+                                </td>
+                            </tr> 
+            
+                            <!-- Second Row -->
+                            <tr class="table-row">
+                                <td class="table-cell">
+                                    <div class="d-flex flex-column">
+                                        <span class="font-weight-bold">{{ 'Profile.HrDepartment' | translate }}</span>
+                                        <span class="text-muted">{{ PersonEditObj.postDate }}</span>
+                                    </div>
+                                </td>
+                                <td class="table-status">
+                                    <span *ngIf="PersonEditObj.portalStatusLkpId==41712 || PersonEditObj.portalStatusLkpId==41699" class="status-pending">{{ 'Profile.Pending' | translate }}</span>
+                                    <span *ngIf="PersonEditObj.portalStatusLkpId==41723" class="status-approved">{{ 'Profile.Approved' | translate }}</span>
+                                </td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
             </div>
+            
         </div>
     </div>
     <div class="col-md-12 mt-2" style="padding-left: 8px;">

@@ -268,8 +268,8 @@ export class VacationRequestsComponent implements OnInit {
     // this.DocumentEditObj.supervisorname= row.supervisorname;
     this.DocumentEditObjIndex = row; 
     const dialogRef = this.dialog.open(DocumentRequestViewComponent, {
-      width: '70%',
-      maxWidth: '70vw',
+      width: '85%',
+      maxWidth: '85vw',
       height: 'auto',
       data: {
         DocumentEditObjIndex: this.DocumentEditObjIndex,
@@ -308,7 +308,7 @@ export class VacationRequestsComponent implements OnInit {
     let matDialog = new MatDialogConfig();
     matDialog.disableClose = true;
 
-    matDialog.width = '60vw'; 
+    matDialog.width = '85vw'; 
     matDialog.panelClass = 'custom-mat-dialog';
     matDialog.data={
       PersonEditObjIndex: this.PersonEditObjIndex,
