@@ -285,7 +285,7 @@ export class BoardComponent implements OnInit {
 
   toggleShowAll(event: Event): void {
     event.preventDefault();
-    this.showAll = !this.showAll;
+    // this.showAll = !this.showAll;
 
     // setTimeout(() => {
     //   this.menuTrigger.openMenu();
@@ -293,6 +293,23 @@ export class BoardComponent implements OnInit {
     setTimeout(() => {
       this.menuTrigger.openMenu();
     }, 0);
+
+      
+      // Prevent flicker by delaying class toggle
+      if (!this.showAll) {
+          const notificationDiv = document.querySelector('.notification-container');
+          if (notificationDiv) {
+              notificationDiv.classList.add('hidden');
+              setTimeout(() => {
+                  this.showAll = true;
+                  notificationDiv.classList.remove('hidden');
+              }, 100); // Delay to prevent flickering
+          }
+      } else {
+          this.showAll = false;
+      }
+
+  
 
   }
 

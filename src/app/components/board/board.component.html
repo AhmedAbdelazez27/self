@@ -29,11 +29,10 @@
                             matBadgeColor="success">notifications</mat-icon>
                     </button>
 
-                    <mat-menu #notificationmenu="matMenu">
+                    <!-- <mat-menu #notificationmenu="matMenu">
                         <div class="notification-container">
                             <div class="notification-header">
                                 <h6 class="notification-title">{{ 'Board.Notifications' | translate }}</h6>
-                                <!-- <a href="#" class="mark-as-read">Mark as read</a> -->
                             </div>
                             <hr>
                             <div *ngIf="NotificationCount !=0" class="notification-list">
@@ -42,16 +41,13 @@
 
                                     <a (click)="handleNotificationClick(item)" class="notification-link">
                                         <div class="notification-content">
-                                            <!-- <div class="notification-image">
-                                    <img class="img" src="{{personPhoto}}" style="max-width: 75%; max-height: 75%;" />
-                                  </div> -->
                                             <div class="notification-image">
                                                 <img class="img" [src]="item.notification.data.properties.photoUrl" />
                                             </div>
                                             <div class="notification-content">
                                                 <span class="menu-info">
                                                     <span class="menu-title">{{ item.notification.data.message }}</span>
-                                                    <span class="menu-desc">{{ item.notification.notificationName
+                                                    <span class="menu-desc" style="text-align: start;">{{ item.notification.notificationName
                                                         }}</span>
                                                     <span class="menu-time text-right">
                                                         <i class="material-icons"></i> {{ item.timeAgoMessage }}
@@ -79,9 +75,60 @@
                                 {{ showAll ? 'Show less' : 'View all notifications' }}
                             </a>
                         </div>
+                    </mat-menu> -->
+
+                    <mat-menu #notificationmenu="matMenu" class="notification-menu">
+                        <div class="notification-container" [ngClass]="{'expanded': showAll}" #notificationDiv>
+                            <!-- Header -->
+                            <div class="notification-header">
+                                <h6 class="notification-title">{{ 'Board.Notifications' | translate }}</h6>
+                            </div>
+                            <hr>
+                    
+                            <!-- Notification List -->
+                            <div *ngIf="NotificationCount !== 0" class="notification-list">
+                                <div *ngFor="let item of NotificationList; let i = index" class="notification-box"
+                                    [ngClass]="{'hidden-notification': !showAll && i >= 3}"
+                                    (click)="handleNotificationClick(item)">
+                                    
+                                    <div class="notification-content">
+                                        <!-- Profile Image -->
+                                        <div class="notification-image">
+                                            <!-- <img class="img" [src]="item.notification.data.properties.photoUrl" /> -->
+                                            <img class="img" [src]="'../../../assets/images/arabic-family1.jpg'" />
+                                        </div>
+                    
+                                        <!-- Notification Details -->
+                                        <div class="notification-text">
+                                            <span class="menu-info">
+                                                <span class="menu-title"><b>{{ item.notification.data.message }}</b></span>
+                                                <span class="menu-desc" style="text-align: start;">{{ item.notification.notificationName }}</span>
+                                                <span class="menu-time" style="text-align: start;">
+                                                    <i class="material-icons">schedule</i> {{ item.timeAgoMessage }}
+                                                </span>
+                                            </span>
+                                        </div>
+                    
+                                        <!-- Status Indicator -->
+                                        <div class="notification-icon">
+                                            <i class="material-icons unread-dot">fiber_manual_record</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- No Notifications Message -->
+                            <div *ngIf="NotificationCount === 0" class="empty-notification">
+                                <h6><b>Currently, You Have 0 Notifications</b></h6>
+                            </div>
+                    
+                            <!-- View All Button -->
+                            <a *ngIf="NotificationCount !== 0" href="#" class="view-all" (click)="toggleShowAll($event)">
+                                {{ showAll ? 'Show less' : 'View all notifications' }}
+                            </a>
+                        </div>
                     </mat-menu>
-
-
+                    
 
                 </div>
 
@@ -127,7 +174,6 @@
                         <div class="notification-container">
                             <div class="notification-header">
                                 <h6 class="notification-title">{{ 'Board.Notifications' | translate }}</h6>
-                                <!-- <a href="#" class="mark-as-read">Mark as read</a> -->
                             </div>
                             <hr>
                             <div  *ngIf="NotificationCount !=0" class="notification-list">
@@ -136,18 +182,16 @@
 
                                     <a (click)="handleNotificationClick(item)" class="notification-link">
                                         <div  *ngIf="item" class="notification-content">
-                                            <!-- <div class="notification-image">
-                                    <img class="img" src="{{personPhoto}}" style="max-width: 75%; max-height: 75%;" />
-                                  </div> -->
                                             <div class="notification-image">
-                                                <img class="img" [src]="item.notification.data.properties.photoUrl" />
+                                                <!-- <img class="img" [src]="item.notification.data.properties.photoUrl" /> -->
+                                                <img class="img" [src]="'../../../assets/images/arabic-family1.jpg'" />
                                             </div>
                                             <div class="notification-content">
                                                 <span class="menu-info">
                                                     <span class="menu-title">{{ item.notification.data.message }}</span>
-                                                    <span class="menu-desc">{{ item.notification.notificationName
+                                                    <span class="menu-desc" style="text-align: start;">{{ item.notification.notificationName
                                                         }}</span>
-                                                    <span class="menu-time text-right">
+                                                    <span class="menu-time text-right" style="text-align: start;">
                                                         <i class="material-icons"></i> {{ item.timeAgoMessage }}
                                                     </span>
                                                 </span>

@@ -184,7 +184,9 @@ export class HrPyPayrollOperationsComponent implements OnInit {
 
       }
     );
+    this.registerForm.disable(); // This will make all fields non-editable
   }
+
   // printpayslip(id) {
   //   this.lang = localStorage.getItem('lang');
 
