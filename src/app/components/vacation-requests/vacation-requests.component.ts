@@ -84,6 +84,7 @@ export class VacationRequestsComponent implements OnInit {
           modify.vacationOperationDate = this.datePipe.transform(this.fromStringToDate(modify.vacationOperationDate));
         })
         this.dataSource = new MatTableDataSource(this.vacationData.hrPersonVacations);
+        console.log(this.dataSource);
        setTimeout(() => this.dataSource.paginator = this.paginator);
        setTimeout(() => this.dataSource.sort = this.sort);
         this.loadingOverlay = false;
