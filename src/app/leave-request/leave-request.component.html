@@ -1,119 +1,246 @@
- <div class="profile-wrapper" style="font-size: 14px;">
-     <app-insideloader *ngIf="loadingOverlay"></app-insideloader>
-     <div class="form" *ngIf="vacationData && !loadingOverlay">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center">
-            <h5 class="card-title">{{ 'Profile.LeavesRequest' | translate }}</h5>
-           </div>
-          <div class="table-responsive mt-3">
-            
-  
-  
+<div class="profile-wrapper" style="font-size: 14px;">
+  <app-insideloader *ngIf="loadingOverlay"></app-insideloader>
+  <div class="form" *ngIf="vacationData && !loadingOverlay">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="card-title">{{ 'Profile.LeavesRequest' | translate }}</h5>
+        </div>
+        <div class="table-responsive mt-3">
+
+
+
           <!-- DataTable Code-->
           <div class="example-header">
-            <div class="search-box d-flex" mat-button  aria-label="Search">
+            <!-- <div class="search-box d-flex" mat-button aria-label="Search">
               <mat-icon class="filter-test">search</mat-icon>
               <input matInput class="filter-input" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </div> -->
+            <div class="form-group mb-4 mt-3">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text table-card-filter-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <g clip-path="url(#clip0_33_1016)">
+                        <path
+                          d="M17.7801 16.7203L13.3033 12.2435C14.5233 10.7515 15.1231 8.84758 14.9787 6.92568C14.8343 5.00378 13.9567 3.21091 12.5275 1.9179C11.0983 0.624891 9.22678 -0.069323 7.30007 -0.0211491C5.37336 0.0270248 3.53886 0.8139 2.17605 2.17672C0.813229 3.53954 0.0263534 5.37403 -0.0218205 7.30074C-0.0699943 9.22745 0.624219 11.099 1.91723 12.5282C3.21023 13.9574 5.00311 14.835 6.92501 14.9794C8.84691 15.1238 10.7508 14.524 12.2428 13.304L16.7196 17.7808C16.861 17.9174 17.0505 17.993 17.2471 17.9913C17.4438 17.9896 17.6319 17.9107 17.771 17.7716C17.91 17.6326 17.9889 17.4445 17.9906 17.2478C17.9923 17.0512 17.9167 16.8617 17.7801 16.7203ZM7.49984 13.5005C6.31315 13.5005 5.15311 13.1486 4.16642 12.4893C3.17972 11.83 2.41068 10.893 1.95656 9.79661C1.50243 8.70025 1.38361 7.49385 1.61512 6.32997C1.84664 5.16608 2.41808 4.09698 3.2572 3.25787C4.09631 2.41875 5.16541 1.84731 6.32929 1.6158C7.49318 1.38428 8.69958 1.5031 9.79594 1.95723C10.8923 2.41136 11.8294 3.18039 12.4887 4.16709C13.1479 5.15378 13.4998 6.31382 13.4998 7.50051C13.4981 9.09126 12.8653 10.6163 11.7405 11.7412C10.6157 12.866 9.09059 13.4987 7.49984 13.5005Z"
+                          fill="#374957" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_33_1016">
+                          <rect width="18" height="18" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Filter" (keyup)="applyFilter($event.target.value)">
+              </div>
             </div>
-        </div>
-          
-          <div class="example-container mat-elevation-z8">
-  
-            <mat-table class="responsive-md responsive-sm zebra sticky-header" [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
-<!--           
-              <ng-container matColumnDef="documentRequestDate">
-                <mat-header-cell *matHeaderCellDef mat-sort-header > {{'Profile.OperationDate' | translate }} </mat-header-cell>
-                <mat-cell *matCellDef="let row" class="operation-date-cell" > 
-  
-                  <div *ngIf="row.source == 1">{{ row.documentRequestDate }}</div>
-                  <div *ngIf="row.source == 2">{{ row.vacationOperationDate }}</div>  
-                
-                </mat-cell>
-              </ng-container> -->
-          
-  
+          </div>
+
+          <div class="example-container mat-elevation-z8 d-md-block d-none ">
+
+            <mat-table class="responsive-md responsive-sm zebra sticky-header" [dataSource]="dataSource" matSort
+              (matSortChange)="announceSortChange($event)">
+              <!--           
+           <ng-container matColumnDef="documentRequestDate">
+             <mat-header-cell *matHeaderCellDef mat-sort-header > {{'Profile.OperationDate' | translate }} </mat-header-cell>
+             <mat-cell *matCellDef="let row" class="operation-date-cell" > 
+
+               <div *ngIf="row.source == 1">{{ row.documentRequestDate }}</div>
+               <div *ngIf="row.source == 2">{{ row.vacationOperationDate }}</div>  
+             
+             </mat-cell>
+           </ng-container> -->
+
+
               <ng-container matColumnDef="type">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.RequestModule' | translate }} </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.RequestModule' | translate }}
+                </mat-header-cell>
                 <mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
               </ng-container>
-       
+
               <ng-container matColumnDef="documentHrPersons">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.HrPersonId' | translate }} </mat-header-cell>
-                <mat-cell *matCellDef="let row"> 
-                  
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.HrPersonId' | translate }}
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+
                   <div *ngIf="row.source == 1">{{ row.documentHrPersons }}</div>
-                  <div *ngIf="row.source == 2">{{ row.vacationHrPersons?.fullName }}</div> 
-  
+                  <div *ngIf="row.source == 2">{{ row.vacationHrPersons?.fullName }}</div>
+
                 </mat-cell>
               </ng-container>
-  
+
               <ng-container matColumnDef="vacationBalance">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.vacationBalance' | translate }}</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.vacationBalance' | translate
+                  }}</mat-header-cell>
                 <mat-cell *matCellDef="let row" class="vacationBalance"> {{row.vacationBalance}} </mat-cell>
               </ng-container>
-      
+
               <ng-container matColumnDef="vacationNoOfDays">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.NoOfDays' | translate }}</mat-header-cell>
                 <mat-cell *matCellDef="let row" class="NoOfDays"> {{row.vacationNoOfDays}} </mat-cell>
               </ng-container>
-  
+
               <ng-container matColumnDef="vacationStartDate">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.StartDate' | translate }}</mat-header-cell>
-                <mat-cell *matCellDef="let row" > {{row.vacationStartDate}} </mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.StartDate' | translate
+                  }}</mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.vacationStartDate}} </mat-cell>
               </ng-container>
-  
-  
+
+
               <ng-container matColumnDef="vacationEndDate">
                 <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.EndDate' | translate }}</mat-header-cell>
-                <mat-cell *matCellDef="let row" > {{row.vacationEndDate}} </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.vacationEndDate}} </mat-cell>
               </ng-container>
-  
+
               <ng-container matColumnDef="documentTypeLkp">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.HrRequestType' | translate }}</mat-header-cell>
-                <mat-cell *matCellDef="let row" > 
-                  
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.HrRequestType' | translate
+                  }}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+
                   <div *ngIf="row.source == 1">{{ row.documentTypeLkp }}</div>
-                  <div *ngIf="row.source == 2">{{ ('Profile.' + row.vacationHrVacationsTypes?.vacationsTypeName) | translate }}</div> 
-                
+                  <div *ngIf="row.source == 2">{{ ('Profile.' + row.vacationHrVacationsTypes?.vacationsTypeName) |
+                    translate }}</div>
+
                 </mat-cell>
               </ng-container>
-  
+
               <ng-container matColumnDef="vacationPortalStatusLkp">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.StatusLkpId' | translate }}</mat-header-cell>
-                <mat-cell *matCellDef="let row" > 
-                  
+                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.StatusLkpId' | translate
+                  }}</mat-header-cell>
+                <mat-cell *matCellDef="let row">
+
                   <div *ngIf="row.source == 1">
-                    <span *ngIf="row.vacationPortalStatusLkpId == 41718" style="color: green; ">{{ row.vacationPortalStatusLkp }}</span>
-                    <span *ngIf="row.vacationPortalStatusLkpId == 41719" style="color: red; ">{{ row.vacationPortalStatusLkp }}</span>
-                    <span *ngIf="row.vacationPortalStatusLkpId == 41717" style="color: orange; ">{{ row.vacationPortalStatusLkp }}</span>
-                    <span *ngIf="row.vacationPortalStatusLkpId == 41716" style="color: orange; ">{{ row.vacationPortalStatusLkp }}</span>
-                    <span *ngIf="row.vacationPortalStatusLkpId == 41721" style="color: green;">{{ row.vacationPortalStatusLkp }}</span></div>
-                  <div *ngIf="row.source == 2">                  
-                    <span *ngIf="row.vacationPortalStatusLkpId == 41699" style="color: green; ">{{ row.vacationPortalStatusLkp }}</span>
-                    <span *ngIf="row.vacationPortalStatusLkpId == 41700" style="color: red; ">{{ row.vacationPortalStatusLkp }}</span>
-                    <span *ngIf="row.vacationPortalStatusLkpId == 41698" style="color: orange; ">{{ row.vacationPortalStatusLkp }}</span>
-                    <span *ngIf="row.vacationPortalStatusLkpId == 41712" style="color: orange; ">{{ row.vacationPortalStatusLkp }}</span>
-                    <span *ngIf="row.vacationPortalStatusLkpId == 41723" style="color: green; ">{{ row.vacationPortalStatusLkp }}</span></div>
-        
-                  </mat-cell>
-              </ng-container>
-  
-              <!-- <ng-container matColumnDef="Actions">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Action' | translate }}</mat-header-cell>
-                <mat-cell *matCellDef="let row"> 
-     
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41718" style="color: green; ">{{
+                      row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41719" style="color: red; ">{{
+                      row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41717" style="color: orange; ">{{
+                      row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41716" style="color: orange; ">{{
+                      row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41721" style="color: green;">{{
+                      row.vacationPortalStatusLkp }}</span>
+                  </div>
+                  <div *ngIf="row.source == 2">
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41699" style="color: green; ">{{
+                      row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41700" style="color: red; ">{{
+                      row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41698" style="color: orange; ">{{
+                      row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41712" style="color: orange; ">{{
+                      row.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="row.vacationPortalStatusLkpId == 41723" style="color: green; ">{{
+                      row.vacationPortalStatusLkp }}</span>
+                  </div>
+
                 </mat-cell>
-              </ng-container> -->
-          
+              </ng-container>
+
+              <!-- <ng-container matColumnDef="Actions">
+             <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Profile.Action' | translate }}</mat-header-cell>
+             <mat-cell *matCellDef="let row"> 
+  
+             </mat-cell>
+           </ng-container> -->
+
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;">
               </mat-row>
             </mat-table>
-          
+
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
           </div>
-   
+
+          <!-- show card on mobile screens  -->
+
+          <div class="d-md-none d-block container-fluid">
+            <div [ngClass]="{ 'table-card-even': i % 2 === 0, 'table-card-odd': i % 2 !== 0 }"
+              *ngFor="let  item of dataSource?.filteredData; let i =index">
+
+              <div class="table-card-item">
+                <p>{{'Profile.RequestModule' | translate}}</p>
+                <p>{{item?.type}}</p>
+              </div>
+
+              <div class="table-card-item">
+                <p>{{'Person Name' | translate}} </p>
+                <p>
+                  <span *ngIf="item?.source == 1">{{ item?.documentHrPersons }}</span>
+                  <span *ngIf="item?.source == 2">{{ item?.vacationHrPersons?.fullName }}</span>
+                </p>
+              </div>
+
+              <div class="table-card-item">
+                <p>{{'Profile.vacationBalance' | translate}}</p>
+                <p>{{item?.vacationBalance}} </p>
+              </div>
+
+              <div class="table-card-item">
+                <p>{{'Profile.NoOfDays' | translate }} </p>
+                <p> {{item?.vacationNoOfDays}} </p>
+              </div>
+
+              <div class="table-card-item">
+                <p>{{'Profile.StartDate' | translate}} </p>
+                <p> {{item?.vacationStartDate}} </p>
+              </div>
+
+              <div class="table-card-item">
+                <p>{{'Profile.EndDate' | translate }} </p>
+                <p> {{item?.vacationEndDate}} </p>
+              </div>
+
+              <div class="table-card-item">
+                <p>{{'Profile.HrRequestType' | translate}} </p>
+                <p>
+                  <span *ngIf="item.source == 1">{{ item?.documentTypeLkp }}</span>
+                  <span *ngIf="item.source == 2">{{ ('Profile.' + item?.vacationHrVacationsTypes?.vacationsTypeName)
+                    |translate}}</span>
+                </p>
+              </div>
+
+              <div class="table-card-item">
+                <p>{{'status' | translate}} </p>
+                <div>
+                  <p *ngIf="item?.source == 1">
+                    <span *ngIf="item?.vacationPortalStatusLkpId == 41718" style="color: green; ">{{
+                      item?.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="item?.vacationPortalStatusLkpId == 41719" style="color: red; ">{{
+                      item?.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="item?.vacationPortalStatusLkpId == 41717" style="color: orange; ">{{
+                      item?.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="item?.vacationPortalStatusLkpId == 41716" style="color: orange; ">{{
+                      item?.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="item?.vacationPortalStatusLkpId == 41721" style="color: green;">{{
+                      item?.vacationPortalStatusLkp }}</span>
+                  </p>
+                  <p *ngIf="item?.source == 2">
+                    <span *ngIf="item?.vacationPortalStatusLkpId == 41699" style="color: green; ">{{
+                      item?.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="item?.vacationPortalStatusLkpId == 41700" style="color: red; ">{{
+                      item?.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="item?.vacationPortalStatusLkpId == 41698" style="color: orange; ">{{
+                      item?.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="item?.vacationPortalStatusLkpId == 41712" style="color: orange; ">{{
+                      item?.vacationPortalStatusLkp }}</span>
+                    <span *ngIf="item?.vacationPortalStatusLkpId == 41723" style="color: green; ">{{
+                      item?.vacationPortalStatusLkp }}</span>
+                  </p>
+                </div>
+
+              </div>
+
+
+            </div>
+          </div>
+
+
+
+
         </div>
       </div>
     </div>
