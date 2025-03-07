@@ -10,7 +10,7 @@
           <!-- <fa-icon *ngIf="!viewRequest" class="ico text-primary fa-2x" [icon]="addIcon" (click)="addVisa()"></fa-icon> -->
         </div>
         <div class="table-responsive mt-3">
-          <table class="table" style="margin-inline-start: 0%;">
+          <table class="table d-md-block d-none" style="margin-inline-start: 0%;">
               <thead>
                   <tr>
                       <th class="mat-header">{{'Profile.HrPersonId' | translate }}</th>
@@ -36,6 +36,44 @@
                   </tr>
               </tbody>
           </table>
+           <!-- card code  -->
+           <div class="d-md-none d-block container-fluid">
+            <div  [ngClass]="{ 'table-card-even': i % 2 === 0, 'table-card-odd': i % 2 !== 0 }"
+            *ngFor="let hrPayrolData of personData; let i = index">
+          
+            <div class="table-card-item">
+              <p>{{  'Profile.HrPersonId' | translate }} </p>
+              <p>  {{hrPayrolData.hrPersonName}} </p>
+            </div>
+          
+            <div class="table-card-item">
+              <p>{{  'Profile.pyPayrollTypeId' | translate }} </p>
+              <p>  {{hrPayrolData.pyPayrollTypeName}} </p>
+            </div>
+          
+            <div class="table-card-item">
+              <p>{{  'Profile.Period' | translate }} </p>
+              <p>  {{hrPayrolData.periodName}} </p>
+            </div>
+          
+            <div class="table-card-item">
+              <p>{{  'Profile.StartDate' | translate }} </p>
+              <p>  {{hrPayrolData.startDate}} </p>
+            </div>
+          
+            <div class="table-card-item">
+              <p>{{  'Profile.EndDate' | translate }} </p>
+              <p>  {{hrPayrolData.endDate}} </p>
+            </div>
+            <div class="table-card-item">
+              <p>{{  'Profile.procedures' | translate }} </p>
+              <fa-icon class="ico text-info" [icon]="editIcon" (click)="openPayrollModal(hrPayrolData.id)"></fa-icon>
+
+            </div>
+          </div>
+          </div>
+
+           <!-- end card  -->
       </div>
       
       
