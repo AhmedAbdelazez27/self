@@ -4,8 +4,8 @@ export const Globals = {
    Url: 'http://compassint.ddns.net:2027/api/services/app/',
   TokenUrl: 'http://compassint.ddns.net:2027/api/services/app/HrPersons/Login',
   ReportUrl: 'https://.tenxerp.com/HrDocumentRequest/PrintHrDocumentRequestPrint',  
-  // VactionReportUrl:  'https://compassint.tenxerp.com/HrPersonVacations/printVactionReportDocument',
-  //  PayrollReportUrl:'https://compassint.tenxerp.com/PyPayrollOperations/printpayslip',
+  VactionReportUrl:  'https://compassint.tenxerp.com/HrPersonVacations/printVactionReportDocument',
+   PayrollReportUrl:'https://compassint.tenxerp.com/PyPayrollOperations/printpayslip',
 
 ///////Local/////////////////
   //   ReportUrl: 'http://localhost:51312/HrDocumentRequest/PrintHrDocumentRequestPrint',  

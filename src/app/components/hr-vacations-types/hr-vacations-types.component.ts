@@ -410,6 +410,7 @@ export class HrVacationsTypesComponent implements OnInit {
     console.log(row)
     this.PersonEditObj.id = row.id;
     this.PersonEditObj.operationNumber = row.operationNumber;
+    this.PersonEditObj.attachmentPath = row.attachmentPath;
     this.PersonEditObj.operationDate = row.operationDate;
     this.PersonEditObj.startDate = row.startDate;
     this.PersonEditObj.endDate = row.endDate; 

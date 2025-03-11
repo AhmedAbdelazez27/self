@@ -152,6 +152,22 @@
                 </div>
             </div>
         </div>
+        <div *ngIf="fileUrl" class="col-md-12 mt-2" style="padding-left: 8px;">
+            <div class="row">
+                <div class="col-md-3" style="padding-left: 8px;">
+                    <h5>{{ 'Profile.File' | translate }}</h5>
+                </div>
+                <div class="col-md-9 d-flex">
+                    <!-- Show File Name -->
+                    <span *ngIf="fileName" class="subheader">{{ fileName }}</span>
+        
+                    <!-- Download Button -->
+                    <a  *ngIf="fileUrl" [href]="fileUrl" target="_blank" download class="btn btn-primary ml-3">
+                        <span class="material-symbols-outlined">download</span> Download
+                    </a>
+                </div>
+            </div>
+        </div>
         <!--<div class="col-md-12 mt-4" style="padding-left: 8px;">
             <div class="row">
                 <div class="col-md-3" style="padding-left: 8px;">

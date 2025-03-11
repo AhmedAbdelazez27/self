@@ -10,6 +10,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { GetVacationDaysInputDto } from 'src/app/models/GetVacationDaysInputDto';
 import { DatePipe } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-hr-view-vacation',
@@ -25,6 +26,7 @@ export class HrViewVacationComponent implements OnInit {
     private dropdownsService:SelectdropdownService,
     private ProfileService:ProfileService,
     private datePipe: DatePipe,
+    private sanitizer: DomSanitizer
   ) { }
   hrPersonList:any=[];
   hrPersonAlternativeList:any=[];
@@ -36,6 +38,8 @@ export class HrViewVacationComponent implements OnInit {
  strid:any;
  selectedEndDate:any;
  selectedStartDate:any;
+ fileUrl: SafeResourceUrl | null = null; // Store the sanitized URL
+ fileName: string | null = null; // Store the file name
   ngOnInit() {
     this.lang = localStorage.getItem('lang');
     this.strid=localStorage.getItem('user_id')
@@ -53,7 +57,12 @@ export class HrViewVacationComponent implements OnInit {
       let userData =  data.result;   
       this.PersonEditObj.supervisorname = userData.hrPersonSupervisor.fullName;
       this.PersonEditObj.postUserName = "";
+      this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.PersonEditObj.attachmentPath);
+      this.fileName = this.extractFileName(this.PersonEditObj.attachmentPath);
     });
+  }
+  extractFileName(url: string): string {
+    return url.split('/').pop() || 'Unknown File';
   }
   fromStringToDate(str):any{
     if(str!=null){

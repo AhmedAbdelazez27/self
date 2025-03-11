@@ -51,7 +51,7 @@ export class VacationRequestsComponent implements OnInit {
   ) { }
   vacationData = new HrPersonVacationsDto(); 
 
-  PersonEditObj = new HrPersonVacationsEditDto();
+  PersonEditObj :any;
   PersonEditObjIndex = null;
 
   DocumentEditObj:HrDocumentRequestEditDto;
@@ -293,11 +293,12 @@ export class VacationRequestsComponent implements OnInit {
     this.PersonEditObj.hrPersonId = row.vacationHrPersonId; 
      this.PersonEditObj.hrPersonName = row.vacationHrPersons.fullName; 
     this.PersonEditObj.vacationBalance = row.vacationBalance; 
-    // this.vacationData.hrVacationsTypeId = row.hrVacationsTypes.hrVacationsTypeId;
+    this.vacationData.hrVacationsTypeId = row.vacationTypeLkpId;
     this.PersonEditObj.hrVacationsTypeName = row.vacationHrVacationsTypes.vacationsTypeName;
     this.PersonEditObj.fndPortalStatusLkp =row.vacationPortalStatusLkp;
     this.PersonEditObj.portalStatusLkpId = row.vacationPortalStatusLkpId;
     this.PersonEditObj.noOfDays = row.vacationNoOfDays;
+    this.PersonEditObj.vacationAttachmentPath = row.vacationAttachmentPath ;
     this.PersonEditObj.notes = row.vacationNotes;
     this.PersonEditObj.reason=row.vacationReason;
     this.PersonEditObj.isOutCountryLeave = row.vacationIsOutCountryLeave == "Y" ? "Yes" : "No";

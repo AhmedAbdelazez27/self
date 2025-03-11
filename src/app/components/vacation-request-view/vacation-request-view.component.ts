@@ -10,6 +10,8 @@ import { GetVacationDaysInputDto } from "src/app/models/GetVacationDaysInputDto"
 import { ProfileService } from "src/app/services/profile.service";
 import { ToastrService } from "ngx-toastr";
 import { PostWithReasonDto } from "src/app/models/postDto";
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { log } from "console";
 
 @Component({
   selector: 'app-vacation-request-view',
@@ -30,6 +32,7 @@ export class VacationRequestViewComponent implements OnInit {
     private ProfileService:ProfileService,
     private datePipe: DatePipe,
     private toastr: ToastrService,
+    private sanitizer: DomSanitizer
   ) { }
   hrPersonList:any=[];
   hrPersonAlternativeList:any=[];
@@ -43,20 +46,30 @@ export class VacationRequestViewComponent implements OnInit {
  selectedEndDate:any;
  selectedStartDate:any;
  postWithReasonDto = new PostWithReasonDto();
+ fileUrl: SafeResourceUrl | null = null; // Store the sanitized URL
+ fileName: string | null = null; // Store the file name
   ngOnInit() {
     this.lang = localStorage.getItem('lang');
     this.strid=localStorage.getItem('user_id')
     this.disabled=false;
     
     this.PersonEditObj = this.injectedData.PersonEditObj;
+    console.log("this.PersonEditObj ",this.PersonEditObj)
      this.GetData(); 
     this.ProfileService.GetProfileData(this.strid)
     .pipe(takeUntil(this.destroy$))
     .subscribe(data=>{ 
+      if(this.PersonEditObj.hrVacationsTypeName=="Sick Leave"){
+        this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.PersonEditObj.vacationAttachmentPath);
+        this.fileName = this.extractFileName(this.PersonEditObj.vacationAttachmentPath);
+      }
       let userData =  data.result;   
       this.PersonEditObj.supervisorname = userData.hrPersonSupervisor.fullName;
       this.PersonEditObj.postUserName = "";
     });
+  }
+  extractFileName(url: string): string {
+    return url.split('/').pop() || 'Unknown File';
   }
   fromStringToDate(str):any{
     let parts = str.split("/");
